@@ -1,0 +1,82 @@
+<!--pages/blueprint/detail/detail.wxml-->
+<view class="container fade-in" wx:if="{{item}}" style="--c:{{item.color}}">
+  <!-- Hero -->
+  <view class="dt-hero">
+    <view class="dt-glow"></view>
+    <view class="dt-icon">{{item.icon}}</view>
+    <view class="dt-meta-pill">
+      <text class="dt-no">No.{{item.no}}</text>
+      <text class="dt-divider">·</text>
+      <text class="dt-cat">{{item.category}}</text>
+    </view>
+    <view class="dt-title">{{item.title}}</view>
+    <view class="dt-theme">「{{item.theme}}」</view>
+  </view>
+
+  <!-- 一句话摘要 -->
+  <view class="card card-border">
+    <view class="code-label">// summary</view>
+    <view class="dt-summary">{{item.summary}}</view>
+  </view>
+
+  <!-- 活动目的 -->
+  <view class="card card-border">
+    <view class="code-label">// 活动目的</view>
+    <view class="dt-text">{{item.goal}}</view>
+  </view>
+
+  <!-- 面向对象 -->
+  <view class="card card-border">
+    <view class="code-label">// 面向对象</view>
+    <view class="dt-text">{{item.audience}}</view>
+  </view>
+
+  <!-- 核心亮点 -->
+  <view class="card card-border">
+    <view class="code-label">// 核心亮点</view>
+    <view class="dt-highlight" wx:for="{{item.highlights}}" wx:key="*this">
+      <text class="dt-bullet" style="background:{{item.color}}1a;color:{{item.color}}">✦</text>
+      <text>{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 活动流程 -->
+  <view class="card card-border">
+    <view class="code-label">// 活动流程</view>
+    <view class="dt-step" wx:for="{{item.agenda}}" wx:key="*this">
+      <text class="dt-step-idx" style="color:{{item.color}}">{{index + 1}}</text>
+      <text class="dt-step-text">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 奖项与收获 -->
+  <view class="card card-border">
+    <view class="code-label">// 奖项与收获</view>
+    <view class="dt-text">{{item.awards}}</view>
+  </view>
+
+  <!-- 时间 / 地点 / 联系 -->
+  <view class="card card-border dt-meta-card">
+    <view class="code-label">// 活动信息</view>
+    <view class="dt-meta-row">
+      <text class="dt-meta-ico">🕐</text>
+      <text>{{item.time}}</text>
+    </view>
+    <view class="dt-meta-row">
+      <text class="dt-meta-ico">📍</text>
+      <text>{{item.location}}</text>
+    </view>
+    <view class="dt-meta-row">
+      <text class="dt-meta-ico">📞</text>
+      <text>{{item.contact}}</text>
+    </view>
+  </view>
+
+  <!-- 详情正文 -->
+  <view class="card card-border">
+    <view class="code-label">// detail</view>
+    <view class="dt-text" wx:for="{{item.detail}}" wx:for-item="p" wx:key="*this">{{p}}</view>
+  </view>
+
+  <view class="btn btn-primary dt-cta" bindtap="goRecruit">喜欢这个活动？立即报名加入 →</view>
+</view>

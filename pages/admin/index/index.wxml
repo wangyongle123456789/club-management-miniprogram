@@ -1,0 +1,41 @@
+<!--pages/admin/index/index.wxml-->
+<view class="container fade-in">
+  <!-- 管理员头部 -->
+  <view class="admin-header card">
+    <view class="admin-header-left">
+      <view class="admin-avatar">🛡️</view>
+      <view>
+        <view class="admin-name">管理员</view>
+        <view class="admin-role">后台管理系统</view>
+      </view>
+    </view>
+    <view class="logout-btn" bindtap="handleLogout">
+      <text>退出</text>
+    </view>
+  </view>
+
+  <!-- 管理模块 -->
+  <view class="card admin-section" wx:for="{{menu}}" wx:key="id">
+    <view class="section-title">{{item.title}}</view>
+    <view class="admin-grid">
+      <view class="admin-item" wx:for="{{item.children}}" wx:for-item="child" wx:for-index="cIdx" wx:key="title" bindtap="goToPage" data-url="{{child.url}}">
+        <view class="admin-item-icon {{cIdx === 0 ? 'icon-purple' : (cIdx === 1 ? 'icon-green' : 'icon-orange')}}">
+          <text>{{cIdx === 0 ? '⚙️' : (cIdx === 1 ? '📋' : '🔑')}}</text>
+        </view>
+        <text>{{child.title}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 云端同步 -->
+  <view class="card sync-card" bindtap="handleSyncCloud">
+    <view class="sync-left">
+      <view class="sync-icon">☁️</view>
+      <view>
+        <view class="sync-title">同步数据到云端</view>
+        <view class="sync-sub">将当前本地数据全量写入云数据库</view>
+      </view>
+    </view>
+    <view class="sync-btn">☁️ 同步</view>
+  </view>
+</view>

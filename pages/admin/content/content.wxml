@@ -1,0 +1,11 @@
+<!--pages/admin/content/content.wxml-->
+<view class="container fade-in">
+  <view class="card content-section" wx:for="{{sections}}" wx:key="id" bindtap="goToEdit" data-url="{{item.url}}">
+    <view class="content-section-icon">{{item.icon}}</view>
+    <view class="content-section-info">
+      <view class="content-section-title">{{item.title}}</view>
+      <view class="content-section-desc">{{item.desc}}</view>
+    </view>
+    <text class="content-section-arrow">›</text>
+  </view>
+</view>

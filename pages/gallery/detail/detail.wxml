@@ -1,0 +1,56 @@
+<!--pages/gallery/detail/detail.wxml-->
+<view class="container fade-in" wx:if="{{album}}">
+  <view class="bg-orbs">
+    <view class="orb orb-1"></view>
+    <view class="orb orb-2"></view>
+    <view class="orb orb-3"></view>
+  </view>
+
+  <!-- 封面 Hero -->
+  <view class="detail-hero">
+    <image class="detail-cover" src="{{album.cover}}" mode="aspectFill" />
+    <view class="detail-hero-mask">
+      <view class="detail-tag-row">
+        <text class="detail-tag" wx:for="{{album.tags}}" wx:key="*this">{{item}}</text>
+      </view>
+      <view class="detail-title">{{album.title}}</view>
+      <view class="detail-sub">{{album.desc}}</view>
+      <view class="detail-meta-row">
+        <text class="detail-meta">📅 {{album.date}}</text>
+        <text class="detail-meta">📍 {{album.location}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 故事正文 -->
+  <view class="card card-border detail-story-card">
+    <view class="code-label">// album.story()</view>
+    <view class="story-paragraph" wx:for="{{album.story}}" wx:key="*this">{{item}}</view>
+
+    <view class="detail-highlights" wx:if="{{album.highlights.length > 0}}">
+      <view class="code-label">// highlights</view>
+      <view class="highlight-item" wx:for="{{album.highlights}}" wx:key="*this">
+        <text class="highlight-dot">✦</text>
+        <text class="highlight-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 图片集 -->
+  <view class="card card-border detail-photos-card" wx:if="{{album.images.length > 0}}">
+    <view class="code-label">// album.photos({{album.images.length}})</view>
+    <view class="photo-grid">
+      <view class="photo-cell" wx:for="{{album.images}}" wx:key="*this" data-idx="{{index}}" bindtap="previewImage">
+        <image class="photo-img" src="{{item}}" mode="aspectFill" lazy-load />
+      </view>
+    </view>
+  </view>
+
+  <!-- 相关入口 -->
+  <view class="detail-actions">
+    <view class="btn btn-primary" bindtap="goToApply">立即报名加入我们</view>
+    <view class="btn btn-secondary" wx:if="{{album.id === 4}}" bindtap="goToHonor">查看完整荣誉成就 ›</view>
+  </view>
+
+  <view class="detail-tip">图片来源：菏泽学院计算机学院官方新闻与活动实拍</view>
+</view>

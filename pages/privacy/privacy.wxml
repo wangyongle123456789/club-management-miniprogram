@@ -1,0 +1,49 @@
+<!--pages/privacy/privacy.wxml-->
+<view class="container fade-in">
+  <view class="code-card">
+    <view class="code-bar">
+      <view class="dot dot-r"></view>
+      <view class="dot dot-y"></view>
+      <view class="dot dot-g"></view>
+      <view class="code-file">privacy.md</view>
+    </view>
+    <view class="code-body">
+      <view class="privacy-title">隐私保护指引</view>
+      <view class="privacy-sub">算法与软件研究社团 · 小程序</view>
+
+      <view class="privacy-section">
+        <view class="term-title">一、我们收集的信息</view>
+        <view class="privacy-p">· 报名 / 注册信息：姓名、学号、手机号、专业、申请理由；</view>
+        <view class="privacy-p">· 登录信息：学号与密码，用于账号校验与登录态保持；</view>
+        <view class="privacy-p">· 使用信息：收藏、浏览历史、报名记录等，用于个性化展示与招新管理。</view>
+      </view>
+
+      <view class="privacy-section">
+        <view class="term-title">二、信息的使用</view>
+        <view class="privacy-p">上述信息仅用于社团招新审核、活动通知、成员服务与小程序功能实现，不会用于任何与社团无关的商业用途。</view>
+      </view>
+
+      <view class="privacy-section">
+        <view class="term-title">三、信息的存储与安全</view>
+        <view class="privacy-p">数据默认存储于你的设备本地；开通云开发后，部分内容将存储于微信云开发数据库，并采用合理的访问控制与传输加密措施加以保护。</view>
+      </view>
+
+      <view class="privacy-section">
+        <view class="term-title">四、信息共享</view>
+        <view class="privacy-p">我们不会向任何第三方出售或泄露你的个人信息。仅社团管理员可在审核招新时查看必要的报名信息，且受其管理职责约束。</view>
+      </view>
+
+      <view class="privacy-section">
+        <view class="term-title">五、你的权利</view>
+        <view class="privacy-p">你可以随时在「我的」页面退出登录、清除本地浏览与收藏数据；如需删除账号及关联信息，可联系下方邮箱处理。</view>
+      </view>
+
+      <view class="privacy-section">
+        <view class="term-title">六、联系方式</view>
+        <view class="privacy-p">如对隐私保护有任何疑问，请联系：2120453844@qq.com</view>
+      </view>
+
+      <view class="privacy-foot">本指引最终解释权归算法与软件研究社团所有。</view>
+    </view>
+  </view>
+</view>

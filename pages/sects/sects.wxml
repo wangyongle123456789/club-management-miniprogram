@@ -1,0 +1,68 @@
+<!--pages/sects/sects.wxml-->
+<view class="container fade-in">
+
+  <!-- 深色终端 Hero -->
+  <view class="hero-terminal sect-hero">
+    <view class="ht-glow"></view>
+    <view class="ht-glow2"></view>
+    <view class="ht-inner">
+      <view class="ht-prompt">$ cat sects.json</view>
+      <view class="ht-title">四大门派</view>
+      <view class="ht-sub">// 算法 · 软件 · 硬件 · 人工智能，总有一脉适合你</view>
+      <view class="ht-badge">⚔️ 择一脉而入 · 与同好并肩</view>
+    </view>
+  </view>
+
+  <!-- 门派卡片 -->
+  <view class="sect-card {{activeId === item.id ? 'sect-active' : ''}}" wx:for="{{sects}}" wx:key="id" id="sect-{{item.id}}" style="--sect:{{item.color}}">
+    <view class="sect-head">
+      <view class="sect-badge">{{item.icon}}</view>
+      <view class="sect-title-group">
+        <view class="sect-name">{{item.name}}</view>
+        <view class="sect-dept">{{item.deptName}}</view>
+      </view>
+      <view class="sect-flag">门派</view>
+    </view>
+    <view class="sect-slogan">{{item.slogan}}</view>
+    <view class="sect-intro">{{item.intro}}</view>
+
+    <!-- 功法境界 -->
+    <view class="sect-block">
+      <view class="code-label">// 功法境界</view>
+      <view class="level-list">
+        <view class="level-item" wx:for="{{item.levels}}" wx:for-item="lv" wx:key="name">
+          <view class="level-dot">{{index + 1}}</view>
+          <view class="level-body">
+            <view class="level-name">{{lv.name}}</view>
+            <view class="level-desc">{{lv.desc}}</view>
+            <view class="level-reward">🎯 {{lv.reward}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 招式 -->
+    <view class="sect-block">
+      <view class="code-label">// 镇派招式</view>
+      <view class="chip-wrap">
+        <text class="chip" wx:for="{{item.skills}}" wx:for-item="sk" wx:key="*this">{{sk}}</text>
+      </view>
+    </view>
+
+    <!-- 镇派绝学 + 长老 -->
+    <view class="sect-foot">
+      <view class="sect-meta">
+        <text class="sect-meta-label">镇派绝学</text>
+        <text class="sect-meta-val">{{item.signature}}</text>
+      </view>
+      <view class="sect-meta">
+        <text class="sect-meta-label">长老</text>
+        <text class="sect-meta-val">{{item.elder}}</text>
+      </view>
+    </view>
+
+    <view class="btn sect-join" bindtap="goToRecruit">⚔️ 拜入{{item.name}}</view>
+  </view>
+
+  <view class="sect-tip">四脉同源，皆出算软。选你所爱，顶峰相见。</view>
+</view>

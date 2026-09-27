@@ -1,0 +1,7 @@
+<!--components/announcement-item/announcement-item.wxml-->
+<view class="announcement-item" bindtap="onTap">
+  <text class="announcement-tag {{type === 'activity' ? 'activity' : ''}}">{{type === 'activity' ? '活动' : '公告'}}</text>
+  <text class="announcement-title">{{title}}</text>
+  <text class="announcement-time">{{time}}</text>
+  <text class="announcement-arrow">›</text>
+</view>

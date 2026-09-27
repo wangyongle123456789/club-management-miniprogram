@@ -1,0 +1,24 @@
+<!--pages/admin/users/detail/detail.wxml-->
+<view class="container" wx:if="{{user}}">
+  <view class="card">
+    <view class="detail-row"><text class="label">姓名</text><text>{{user.name}}</text></view>
+    <view class="detail-row"><text class="label">学号</text><text>{{user.username}}</text></view>
+    <view class="detail-row"><text class="label">手机号</text><text>{{user.phone}}</text></view>
+    <view class="detail-row"><text class="label">专业</text><text>{{user.major}}</text></view>
+    <view class="detail-row"><text class="label">状态</text><text class="status-tag {{user.status === '正常' ? 'normal' : 'disabled'}}">{{user.status}}</text></view>
+  </view>
+
+  <view class="danger-zone">
+    <view class="danger-title">危险操作</view>
+    <view class="delete-btn" bindtap="deleteUser">
+      <text>删除该用户</text>
+    </view>
+  </view>
+</view>
+
+<view class="container" wx:else>
+  <view class="empty">
+    <view class="empty-icon">😕</view>
+    <text class="empty-text">用户不存在</text>
+  </view>
+</view>

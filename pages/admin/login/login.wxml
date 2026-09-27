@@ -1,0 +1,44 @@
+<!--pages/admin/login/login.wxml-->
+<view class="container fade-in">
+  <view class="login-wrap">
+    <!-- Logo 区 -->
+    <view class="login-logo">
+      <view class="logo-box">
+        <text class="logo-icon">🔒</text>
+      </view>
+      <view class="login-title">管理员验证</view>
+      <view class="login-subtitle">请输入管理密码以进入后台</view>
+    </view>
+
+    <!-- 表单区 -->
+    <view class="card login-card">
+      <view class="input-group">
+        <text class="input-label">管理密码</text>
+        <input
+          class="input-field {{errorMsg ? 'input-error' : ''}}"
+          type="password"
+          placeholder="请输入管理员密码"
+          value="{{password}}"
+          bindinput="onInput"
+          focus="{{true}}"
+          confirm-type="done"
+          bindconfirm="handleLogin"
+        />
+        <view class="error-tip" wx:if="{{errorMsg}}">
+          <text>⚠️ {{errorMsg}}</text>
+        </view>
+      </view>
+
+      <button
+        class="btn login-submit-btn"
+        disabled="{{loading}}"
+        bindtap="handleLogin"
+      >{{loading ? '验证中...' : '验证登录'}}</button>
+    </view>
+
+    <!-- 底部提示 -->
+    <view class="login-footer">
+      <text>默认密码：admin123（可在后台修改）</text>
+    </view>
+  </view>
+</view>

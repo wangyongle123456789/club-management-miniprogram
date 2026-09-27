@@ -1,0 +1,96 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/sects/sects",
+    "pages/announcement/announcement",
+    "pages/activity/activity",
+    "pages/training/training",
+    "pages/honor/honor",
+    "pages/recruitment/list/list",
+    "pages/recruitment/detail/detail",
+    "pages/recruitment/apply/apply",
+    "pages/gallery/gallery",
+    "pages/gallery/detail/detail",
+    "pages/honor/detail/detail",
+    "pages/announcement/detail/detail",
+    "pages/activity/detail/detail",
+    "pages/training/detail/detail",
+    "pages/story/story",
+    "pages/easter/easter",
+    "pages/privacy/privacy",
+    "pages/profile/profile",
+    "pages/profile/register/register",
+    "pages/profile/my-registrations/my-registrations",
+    "pages/profile/my-favorites/my-favorites",
+    "pages/profile/history/history",
+    "pages/profile/about/about",
+    "pages/blueprint/blueprint",
+    "pages/blueprint/detail/detail"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/admin",
+      "pages": [
+        "login/login",
+        "index/index",
+        "admin-manage/admin-manage",
+        "logs/logs",
+        "password/password",
+        "users/users",
+        "users/detail/detail",
+        "content/content",
+        "content-edit/content-edit",
+        "enrollments/enrollments",
+        "applicants/applicants"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "算法与软件研究社团",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f5f6fa"
+  },
+  "tabBar": {
+    "color": "#b2bec3",
+    "selectedColor": "#6c5ce7",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/recruitment/list/list",
+        "text": "招新",
+        "iconPath": "images/tabbar/recruit.png",
+        "selectedIconPath": "images/tabbar/recruit-active.png"
+      },
+      {
+        "pagePath": "pages/gallery/gallery",
+        "text": "风采",
+        "iconPath": "images/tabbar/gallery.png",
+        "selectedIconPath": "images/tabbar/gallery-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/tabbar/profile.png",
+        "selectedIconPath": "images/tabbar/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "preloadRule": {
+    "pages/profile/profile": {
+      "network": "all",
+      "packages": ["pages/admin"]
+    }
+  },
+  "lazyCodeLoading": "requiredComponents"
+}

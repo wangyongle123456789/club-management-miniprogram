@@ -1,0 +1,27 @@
+<!--pages/admin/users/users.wxml-->
+<view class="container">
+  <view class="search-bar">
+    <input class="search-input" type="text" placeholder="搜索姓名 / 学号 / 专业" value="{{keyword}}" bindinput="onSearch" />
+    <text class="search-clear" wx:if="{{keyword}}" bindtap="clearSearch">✕</text>
+  </view>
+
+  <view class="user-list" wx:if="{{filtered.length > 0}}">
+    <view class="user-row" wx:for="{{filtered}}" wx:key="id">
+      <view class="user-main" data-id="{{item.id}}" bindtap="goToDetail">
+        <view class="user-name">{{item.name}}</view>
+        <view class="user-id">学号：{{item.username}}</view>
+      </view>
+      <view class="user-actions">
+        <text class="user-status {{item.status === '正常' ? 'normal' : 'disabled'}}">{{item.status}}</text>
+        <view class="delete-btn" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="deleteUser">
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{filtered.length === 0}}">
+    <view class="empty-icon">👥</view>
+    <text class="empty-text">{{keyword ? '未找到匹配用户' : '暂无用户数据'}}</text>
+  </view>
+</view>

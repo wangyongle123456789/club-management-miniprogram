@@ -1,0 +1,25 @@
+<!--pages/honor/honor.wxml-->
+<view class="container">
+  <view class="card card-border">
+    <view class="code-label">// honors.list()</view>
+    <view class="section-title">{{clubName}} · 荣誉成就</view>
+    <view class="honor-list" wx:if="{{honors.length > 0}}">
+      <view class="honor-item" wx:for="{{honors}}" wx:key="id" data-id="{{item.id}}" bindtap="goToDetail">
+        <view class="honor-rank {{index === 0 ? 'rank-gold' : (index === 1 ? 'rank-silver' : (index === 2 ? 'rank-bronze' : 'rank-normal'))}}">
+          <text>{{index + 1}}</text>
+        </view>
+        <view class="honor-body">
+          <view class="honor-text">{{item.title}}</view>
+          <view class="honor-level">{{item.level}}</view>
+          <view class="honor-desc">{{item.desc}}</view>
+        </view>
+        <view class="honor-arrow">›</view>
+      </view>
+    </view>
+
+    <view wx:if="{{honors.length === 0}}" class="empty-state">
+      <view class="empty-icon">🏆</view>
+      <text class="empty-text">暂无荣誉记录</text>
+    </view>
+  </view>
+</view>

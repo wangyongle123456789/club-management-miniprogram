@@ -1,0 +1,554 @@
+/**app.wxss**/
+page {
+  /* 主色：紫 + 电光青，科技感 */
+  --primary: #6c5ce7;
+  --primary-dark: #5a4bd1;
+  --primary-light: #f0edff;
+  --primary-gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  --accent: #00c2ff;
+  --accent-light: #e0f7ff;
+  --accent-gradient: linear-gradient(135deg, #00c2ff 0%, #6c5ce7 100%);
+
+  /* 辅助色 */
+  --pink: #fd79a8;
+  --pink-light: #ffe0ec;
+  --orange: #fdcb6e;
+  --orange-light: #fff8e1;
+
+  --success: #00b894;
+  --success-light: #e0f9f0;
+  --warning: #fdcb6e;
+  --warning-light: #fff8e1;
+  --danger: #ff7675;
+  --danger-light: #ffe0e0;
+
+  /* 文字 */
+  --text: #1c2030;
+  --text-secondary: #5a6478;
+  --text-muted: #9aa3b8;
+
+  /* 背景与边框 */
+  --border: #eceef5;
+  --bg: #f5f6fb;
+  --bg-card: rgba(255, 255, 255, 0.80);
+
+  /* 等宽字体（计算机风核心） */
+  --mono: 'SF Mono', 'JetBrains Mono', 'Roboto Mono', 'Menlo', 'Consolas', monospace;
+
+  color: var(--text);
+  font-size: 28rpx;
+  line-height: 1.65;
+  font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+
+  /* 极光 + 工程网格背景（高级感 + 计算机风） */
+  background-color: #f4f5fb;
+  background-image:
+    linear-gradient(rgba(108, 92, 231, 0.045) 1rpx, transparent 1rpx),
+    linear-gradient(90deg, rgba(108, 92, 231, 0.045) 1rpx, transparent 1rpx),
+    radial-gradient(120% 70% at 8% 0%, rgba(162, 155, 254, 0.20) 0%, transparent 55%),
+    radial-gradient(120% 70% at 94% 6%, rgba(0, 194, 255, 0.15) 0%, transparent 52%),
+    linear-gradient(180deg, #fbfaff 0%, #f4f5fb 45%, #eef0f8 100%);
+  background-size: 44rpx 44rpx, 44rpx 44rpx, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+
+.container {
+  padding: 24rpx;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* ===== 卡片升级 ===== */
+.card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.7);
+  border-radius: 28rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(108, 92, 231, 0.10);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 彩色顶边卡片 */
+.card-accent-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: var(--primary-gradient);
+}
+
+/* 左边彩条卡片 */
+.card-accent-left {
+  padding-left: 36rpx;
+}
+.card-accent-left::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20rpx;
+  bottom: 20rpx;
+  width: 6rpx;
+  border-radius: 0 3rpx 3rpx 0;
+  background: var(--primary-gradient);
+}
+
+/* ===== 区块标题 ===== */
+.section-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-bottom: 24rpx;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.5rpx;
+}
+
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 8rpx;
+  height: 34rpx;
+  background: var(--primary-gradient);
+  border-radius: 6rpx;
+  margin-right: 16rpx;
+}
+
+/* ===== 按钮升级 ===== */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(108, 92, 231, 0.3);
+}
+
+.btn-primary:active {
+  box-shadow: 0 4rpx 12rpx rgba(108, 92, 231, 0.4);
+  transform: scale(0.97);
+}
+
+.btn-outline {
+  border: 2rpx solid var(--border);
+  color: var(--primary);
+  background: #ffffff;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff7675, #e17055);
+  color: #ffffff;
+  box-shadow: 0 8rpx 20rpx rgba(255, 118, 117, 0.2);
+}
+
+.btn-sm {
+  height: 64rpx;
+  border-radius: 32rpx;
+  font-size: 24rpx;
+}
+
+/* ===== 网格 ===== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+/* ===== 导航入口项 ===== */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28rpx 0;
+  background: var(--bg);
+  border-radius: 20rpx;
+  transition: all 0.2s ease;
+}
+
+.nav-item:active {
+  background: var(--primary-light);
+  transform: scale(0.95);
+}
+
+.nav-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-bottom: 14rpx;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.nav-text {
+  font-size: 24rpx;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ===== 标签 ===== */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.tag-primary {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.tag-success {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.tag-warning {
+  background: var(--warning-light);
+  color: #e17055;
+}
+
+.tag-danger {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+/* ===== 空状态 ===== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+  opacity: 0.6;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: var(--text-muted);
+}
+
+/* ===== 分割线 ===== */
+.divider {
+  height: 1rpx;
+  background: var(--border);
+  margin: 20rpx 0;
+}
+
+.divider-dotted {
+  height: 2rpx;
+  background: repeating-linear-gradient(90deg, var(--border) 0, var(--border) 8rpx, transparent 8rpx, transparent 16rpx);
+  margin: 20rpx 0;
+}
+
+/* ===== 通用过渡 ===== */
+.fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 徽章数字 ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36rpx;
+  height: 36rpx;
+  border-radius: 18rpx;
+  padding: 0 10rpx;
+  font-size: 20rpx;
+  font-weight: 600;
+  background: var(--danger);
+  color: #fff;
+}
+
+/* ===== 渐变文字 ===== */
+.gradient-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== 高级感：装饰光球 ===== */
+.bg-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bg-orbs .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60rpx);
+  opacity: 0.55;
+}
+.bg-orbs .orb-1 {
+  width: 360rpx;
+  height: 360rpx;
+  top: -80rpx;
+  right: -60rpx;
+  background: radial-gradient(circle, rgba(162, 155, 254, 0.55), transparent 70%);
+}
+.bg-orbs .orb-2 {
+  width: 300rpx;
+  height: 300rpx;
+  top: 240rpx;
+  left: -90rpx;
+  background: radial-gradient(circle, rgba(0, 206, 201, 0.45), transparent 70%);
+}
+.bg-orbs .orb-3 {
+  width: 320rpx;
+  height: 320rpx;
+  bottom: 120rpx;
+  right: -80rpx;
+  background: radial-gradient(circle, rgba(253, 121, 168, 0.40), transparent 70%);
+}
+
+/* 内容层置于光球之上 */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== 高级感：区块标题带副标题 ===== */
+.section-head {
+  margin-bottom: 24rpx;
+}
+.section-head .section-main {
+  display: flex;
+  align-items: baseline;
+  gap: 14rpx;
+}
+.section-head .section-title-lg {
+  font-size: 36rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+}
+.section-head .section-sub {
+  font-size: 24rpx;
+  color: var(--text-muted);
+  margin-top: 6rpx;
+  letter-spacing: 0.5rpx;
+}
+
+/* ===== 高级感：玻璃徽章 ===== */
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6rpx;
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1rpx solid rgba(108, 92, 231, 0.18);
+  box-shadow: 0 4rpx 12rpx rgba(108, 92, 231, 0.08);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+}
+
+/* ============================================================
+   计算机风 · 精致升级（2026-08-26）
+   参考开源：Frost-Glass / crypto-dashboard-ui / Fintech / WeUI-dark
+   ============================================================ */
+
+/* 等宽字体（数字 / 代码 / 标签） */
+.mono { font-family: var(--mono); }
+
+/* 代码注释式小标签：// 社团简介 */
+.code-label {
+  font-family: var(--mono);
+  font-size: 22rpx;
+  color: var(--accent);
+  letter-spacing: 1rpx;
+  margin-bottom: 10rpx;
+  opacity: 0.92;
+}
+
+/* 终端提示符标题：> 活动日程 */
+.term-title {
+  display: flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 22rpx;
+}
+.term-title::before {
+  content: '>';
+  color: var(--accent);
+  margin-right: 12rpx;
+  font-weight: 700;
+}
+
+/* 代码窗口卡片（macOS 红黄绿三点 + 文件名） */
+.code-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1rpx solid rgba(108, 92, 231, 0.12);
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 10rpx 30rpx rgba(108, 92, 231, 0.10);
+}
+.code-card .code-bar {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 22rpx;
+  background: linear-gradient(180deg, rgba(108, 92, 231, 0.07), transparent);
+  border-bottom: 1rpx solid rgba(108, 92, 231, 0.08);
+}
+.code-card .dot { width: 14rpx; height: 14rpx; border-radius: 50%; margin-right: 8rpx; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+.code-card .code-file {
+  font-family: var(--mono);
+  font-size: 20rpx;
+  color: var(--text-muted);
+  margin-left: 10rpx;
+}
+.code-card .code-body { padding: 24rpx; }
+
+/* 等宽徽章 / 键值标签 */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 8rpx;
+  background: rgba(108, 92, 231, 0.08);
+  color: var(--primary);
+  border: 1rpx solid rgba(108, 92, 231, 0.16);
+}
+
+/* 霓虹发光文字 */
+.glow-text {
+  color: var(--accent);
+  text-shadow: 0 0 18rpx rgba(0, 194, 255, 0.45);
+}
+
+/* 大数字等宽 */
+.stat-num { font-family: var(--mono); font-weight: 700; }
+
+/* 卡片渐变描边（精致感） */
+.card-border {
+  border: 1rpx solid rgba(108, 92, 231, 0.14);
+  box-shadow: 0 8rpx 32rpx rgba(108, 92, 231, 0.10), inset 0 1rpx 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ===== 深色终端 Hero（首页签名元素） ===== */
+.hero-terminal {
+  position: relative;
+  border-radius: 32rpx;
+  padding: 44rpx 34rpx;
+  overflow: hidden;
+  background: linear-gradient(160deg, #141833 0%, #1d1f3d 55%, #271a3c 100%);
+  box-shadow: 0 22rpx 56rpx rgba(20, 16, 40, 0.38);
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+}
+.hero-terminal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(120, 130, 255, 0.10) 1rpx, transparent 1rpx),
+    linear-gradient(90deg, rgba(120, 130, 255, 0.10) 1rpx, transparent 1rpx);
+  background-size: 40rpx 40rpx;
+  opacity: 0.6;
+}
+.hero-terminal .ht-glow {
+  position: absolute;
+  width: 320rpx; height: 320rpx;
+  border-radius: 50%;
+  filter: blur(70rpx);
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.45), transparent 70%);
+  top: -100rpx; right: -60rpx;
+}
+.hero-terminal .ht-glow2 {
+  position: absolute;
+  width: 260rpx; height: 260rpx;
+  border-radius: 50%;
+  filter: blur(70rpx);
+  background: radial-gradient(circle, rgba(124, 92, 231, 0.5), transparent 70%);
+  bottom: -110rpx; left: -50rpx;
+}
+.hero-terminal .ht-inner { position: relative; z-index: 1; }
+.hero-terminal .ht-prompt {
+  font-family: var(--mono);
+  color: #7fe3ff;
+  font-size: 22rpx;
+  letter-spacing: 1rpx;
+  margin-bottom: 14rpx;
+}
+.hero-terminal .ht-title {
+  color: #ffffff;
+  font-size: 48rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+  line-height: 1.25;
+}
+.hero-terminal .ht-sub {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--mono);
+  font-size: 24rpx;
+  margin-top: 14rpx;
+  letter-spacing: 0.5rpx;
+}
+.hero-terminal .ht-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-top: 26rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-family: var(--mono);
+  color: #cdeaff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid rgba(255, 255, 255, 0.16);
+}
+.hero-terminal .ht-cta { margin-top: 30rpx; width: 100%; }

@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="admin-list" wx:if="{{admins.length > 0}}">
+    <view class="admin-row" wx:for="{{admins}}" wx:key="id">
+      <text>{{item.name}}</text>
+      <view class="admin-right">
+        <text class="admin-role">{{item.role}}</text>
+        <text class="admin-delete" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="deleteAdmin">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{admins.length === 0}}" class="empty-state">
+    <view class="empty-icon">🛡️</view>
+    <text class="empty-text">暂无管理员</text>
+  </view>
+
+  <view class="add-panel" wx:if="{{showAdd}}">
+    <input class="add-input" placeholder="管理员账号" data-field="name" value="{{form.name}}" bindinput="onInput" />
+    <input class="add-input" placeholder="角色，如：内容管理员" data-field="role" value="{{form.role}}" bindinput="onInput" />
+    <view class="btn btn-primary add-btn {{submitting ? 'disabled' : ''}}" bindtap="addAdmin">确认添加</view>
+  </view>
+
+  <view class="btn btn-outline add-toggle-btn" bindtap="toggleAdd">{{showAdd ? '取消' : '新增管理员'}}</view>
+</view>

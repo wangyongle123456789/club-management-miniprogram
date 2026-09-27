@@ -1,0 +1,26 @@
+<!--pages/story/story.wxml-->
+<view class="container fade-in">
+  <view class="bg-orbs">
+    <view class="orb orb-1"></view>
+    <view class="orb orb-2"></view>
+    <view class="orb orb-3"></view>
+  </view>
+
+  <view class="code-label">// story.md · 成长诗篇</view>
+  <view class="story-hero">
+    <view class="story-badge">📖 社团报道</view>
+    <view class="story-title">{{story.title}}</view>
+    <view class="story-sub">{{story.subtitle}}</view>
+    <view class="story-divider"></view>
+  </view>
+
+  <view class="story-chapter" wx:for="{{story.chapters}}" wx:key="id">
+    <view class="chapter-no">{{item.id}}</view>
+    <view class="chapter-body">
+      <view class="chapter-title">{{item.title}}</view>
+      <view class="chapter-para" wx:for="{{item.paragraphs}}" wx:for-item="p" wx:key="*this">{{p}}</view>
+    </view>
+  </view>
+
+  <view class="story-end">— 七年薪火，初心不改 · 欢迎加入算软社 —</view>
+</view>

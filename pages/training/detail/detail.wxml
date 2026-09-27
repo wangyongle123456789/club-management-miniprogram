@@ -1,0 +1,35 @@
+<!--pages/training/detail/detail.wxml-->
+<view class="container fade-in" wx:if="{{item}}">
+  <view class="bg-orbs">
+    <view class="orb orb-1"></view>
+    <view class="orb orb-2"></view>
+    <view class="orb orb-3"></view>
+  </view>
+
+  <view class="card card-border detail-story-card">
+    <view class="code-label">// training.detail()</view>
+    <view class="detail-title dark">{{item.title}}</view>
+    <view class="train-meta">
+      <view class="train-meta-item"><text class="train-meta-icon">🕐</text><text>{{item.time}}</text></view>
+      <view class="train-meta-item"><text class="train-meta-icon">👤</text><text>{{item.target}}</text></view>
+      <view class="train-meta-item"><text class="train-meta-icon">🎓</text><text>导师：{{item.mentor}}</text></view>
+    </view>
+
+    <view class="train-section" wx:if="{{item.outline.length > 0}}">
+      <view class="code-label">// 课程大纲</view>
+      <view class="outline-item" wx:for="{{item.outline}}" wx:key="*this">
+        <view class="outline-dot">{{index + 1}}</view>
+        <view class="outline-text">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="train-section" wx:if="{{item.detail.length > 0}}">
+      <view class="code-label">// 课程介绍</view>
+      <view class="story-paragraph" wx:for="{{item.detail}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="detail-actions">
+    <view class="btn btn-primary" bindtap="goToApply">立即报名加入训练</view>
+  </view>
+</view>

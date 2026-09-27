@@ -1,0 +1,58 @@
+<!--pages/recruitment/apply/apply.wxml-->
+<view class="container">
+  <view class="card apply-club-card">
+    <image class="apply-cover" src="{{club.cover}}" mode="aspectFill" />
+    <view class="apply-info">
+      <view class="apply-name">{{club.name}}</view>
+      <text class="tag {{club.requireAudit ? 'tag-warning' : 'tag-success'}}">
+        {{club.requireAudit ? '需要审核' : '无需审核'}}
+      </text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">填写报名资料</view>
+    <view class="form-item">
+      <text class="form-label">姓名 <text class="required">*</text></text>
+      <input class="form-input" placeholder="请输入你的姓名" data-field="name" bindinput="onInput" value="{{form.name}}" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">学号 <text class="required">*</text></text>
+      <input class="form-input" placeholder="请输入学号" data-field="studentId" bindinput="onInput" value="{{form.studentId}}" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">手机号 <text class="required">*</text></text>
+      <input class="form-input" type="number" maxlength="11" placeholder="请输入手机号" data-field="phone" bindinput="onInput" value="{{form.phone}}" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">专业</text>
+      <input class="form-input" placeholder="请输入你的专业" data-field="major" bindinput="onInput" value="{{form.major}}" />
+    </view>
+    <view class="form-item form-direction">
+      <text class="form-label">意向方向 <text class="required">*</text></text>
+      <view class="direction-grid">
+        <view
+          class="direction-chip {{form.direction === item.deptName ? 'active' : ''}}"
+          wx:for="{{sects}}"
+          wx:key="id"
+          data-name="{{item.deptName}}"
+          bindtap="onSelectDirection"
+          style="--sc:{{item.color}}"
+        >
+          <text class="direction-icon">{{item.icon}}</text>
+          <text class="direction-name">{{item.deptName}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="form-item">
+      <text class="form-label">QQ号</text>
+      <input class="form-input" type="number" placeholder="选填，方便拉你进招新群" data-field="qq" bindinput="onInput" value="{{form.qq}}" />
+    </view>
+    <view class="form-item form-textarea">
+      <text class="form-label">申请理由 <text class="required">*</text></text>
+      <textarea class="form-textarea-input" placeholder="请简述你为什么想加入算法与软件研究社团（如编程基础、竞赛经历等）" data-field="reason" bindinput="onInput" value="{{form.reason}}" />
+    </view>
+  </view>
+
+  <view class="btn btn-primary" bindtap="submit">提交报名</view>
+</view>

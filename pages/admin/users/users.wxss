@@ -1,0 +1,111 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 16rpx 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--text);
+}
+
+.search-clear {
+  font-size: 28rpx;
+  color: var(--text-muted);
+  padding: 8rpx 16rpx;
+}
+
+.user-list {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.user-row:last-child {
+  border-bottom: none;
+}
+
+.user-main {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.user-id {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-top: 8rpx;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.user-status {
+  font-size: 24rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.user-status.normal {
+  background: #dcfce7;
+  color: var(--success);
+}
+
+.user-status.disabled {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+.delete-btn {
+  padding: 8rpx 20rpx;
+  border-radius: 12rpx;
+  background: #fee;
+  border: 1rpx solid #fcc;
+}
+
+.delete-btn text {
+  font-size: 22rpx;
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.delete-btn:active {
+  background: #fdd;
+}
+
+/* 空状态 */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}

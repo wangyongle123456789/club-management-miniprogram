@@ -1,0 +1,48 @@
+{
+  "compileType": "miniprogram",
+  "libVersion": "3.17.0",
+  "packOptions": {
+    "ignore": [
+      { "type": "folder", "value": "cloud" },
+      { "type": "folder", "value": "scripts" },
+      { "type": "folder", "value": "社团管理小程序_备份_20260804" },
+      { "type": "folder", "value": "策划书_已修改" },
+      { "type": "suffix", "value": ".zip" },
+      { "type": "suffix", "value": ".md" }
+    ],
+    "include": []
+  },
+  "setting": {
+    "coverView": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmRelationList": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false
+  },
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "auto",
+    "tabSize": 2
+  },
+  "appid": "wxe9d9f98676285b6e",
+  "simulatorPluginLibVersion": {}
+}

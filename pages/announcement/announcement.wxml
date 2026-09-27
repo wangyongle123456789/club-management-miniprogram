@@ -1,0 +1,25 @@
+<!--pages/announcement/announcement.wxml-->
+<view class="container fade-in">
+  <view class="card card-border">
+    <view class="code-label">// announcements.all()</view>
+    <view class="section-title">📢 社团公告</view>
+    <view class="announce-list" wx:if="{{list.length > 0}}">
+      <view class="announce-item" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="goToDetail">
+        <view class="announce-marker"></view>
+        <view class="announce-body">
+          <view class="announce-title">{{item.title}}</view>
+          <view class="announce-meta">
+            <text class="announce-tag {{item.type}}">{{item.type === 'notice' ? '通知' : (item.type === 'activity' ? '活动' : '重要')}}</text>
+            <text>{{item.time}}</text>
+          </view>
+        </view>
+        <view class="announce-arrow">›</view>
+      </view>
+    </view>
+
+    <view wx:if="{{list.length === 0}}" class="empty-state">
+      <view class="empty-icon">📢</view>
+      <text class="empty-text">暂无公告</text>
+    </view>
+  </view>
+</view>

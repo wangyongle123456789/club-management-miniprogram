@@ -1,0 +1,130 @@
+.apply-club-card {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.apply-cover {
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.apply-club-info {
+  flex: 1;
+}
+
+.apply-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 14rpx;
+}
+
+/* 表单 */
+.form-section {
+  margin-top: 0;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.form-label {
+  width: 150rpx;
+  font-size: 28rpx;
+  color: var(--text);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.form-label .required {
+  color: var(--danger);
+  margin-left: 2rpx;
+}
+
+.form-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--text);
+  padding: 10rpx 0;
+}
+
+/* 文本框 */
+.form-textarea {
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 22rpx 0;
+}
+
+.form-textarea .form-label {
+  margin-bottom: 16rpx;
+}
+
+.form-textarea-input {
+  width: 100%;
+  height: 200rpx;
+  padding: 20rpx;
+  background: var(--bg);
+  border-radius: 16rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: var(--text);
+}
+
+.form-textarea-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* 意向方向选择 */
+.form-direction {
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 22rpx 0;
+}
+.form-direction .form-label {
+  margin-bottom: 16rpx;
+}
+.direction-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.direction-chip {
+  width: 48.6%;
+  margin-bottom: 16rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 20rpx;
+  background: var(--bg);
+  border: 2rpx solid transparent;
+  border-radius: 16rpx;
+  transition: all 0.2s ease;
+}
+.direction-chip:active { transform: scale(0.97); }
+.direction-chip.active {
+  background: #fff;
+  border-color: var(--sc, #6c5ce7);
+  box-shadow: 0 4rpx 16rpx rgba(108, 92, 231, 0.14);
+}
+.direction-icon { font-size: 36rpx; }
+.direction-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: var(--text);
+}
+.direction-chip.active .direction-name { color: var(--sc, #6c5ce7); }
+
+.submit-btn {
+  margin-top: 32rpx;
+}

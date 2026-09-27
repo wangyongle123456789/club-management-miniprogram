@@ -1,0 +1,22 @@
+<!--pages/easter/easter.wxml-->
+<view class="easter-page">
+  <view class="easter-glow"></view>
+  <view class="easter-card">
+    <view class="easter-emoji">🎉</view>
+    <view class="easter-title">你发现了算软社的秘密基地！</view>
+    <view class="easter-sub">连续点击首页社名 5 次才进得来，你手速可以的 😎</view>
+
+    <view class="easter-perk">
+      <view class="easter-perk-label">🎁 新生专属福利</view>
+      <view class="easter-perk-text">{{perk}}</view>
+    </view>
+
+    <view class="easter-poem">以代码为刃 · 以温暖为盾
+我们在 M304，等你来写下一行</view>
+
+    <button class="easter-btn primary" bindtap="copySecret">📋 复制加群暗号</button>
+    <button class="easter-btn ghost" bindtap="goRecruit">立即去报名 ›</button>
+    <button class="easter-btn share" open-type="share">分享给同学</button>
+  </view>
+  <view class="easter-foot">// 把这份彩蛋分享给室友，一起入伙吧</view>
+</view>

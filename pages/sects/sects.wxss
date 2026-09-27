@@ -1,0 +1,220 @@
+/* pages/sects/sects.wxss */
+.sect-hero {
+  margin-bottom: 24rpx;
+}
+
+.sect-card {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border: 1rpx solid rgba(108, 92, 231, 0.14);
+  border-left: 8rpx solid var(--sect);
+  border-radius: 28rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(108, 92, 231, 0.10);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 深链定位高亮：从首页点某一宗进来时发光标识 */
+.sect-card.sect-active {
+  border: 2rpx solid var(--sect);
+  border-left: 8rpx solid var(--sect);
+  box-shadow: 0 0 0 6rpx rgba(108, 92, 231, 0.10), 0 14rpx 44rpx rgba(108, 92, 231, 0.20);
+  animation: sectGlow 1.6s ease-in-out 2;
+}
+@keyframes sectGlow {
+  0%, 100% { box-shadow: 0 0 0 6rpx rgba(108, 92, 231, 0.10), 0 14rpx 44rpx rgba(108, 92, 231, 0.20); }
+  50% { box-shadow: 0 0 0 12rpx rgba(108, 92, 231, 0.05), 0 14rpx 44rpx rgba(108, 92, 231, 0.30); }
+}
+
+.sect-head {
+  display: flex;
+  align-items: center;
+}
+
+.sect-badge {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52rpx;
+  background: rgba(108, 92, 231, 0.06);
+  border: 1rpx solid var(--sect);
+  flex-shrink: 0;
+}
+
+.sect-title-group {
+  margin-left: 20rpx;
+  flex: 1;
+  min-width: 0;
+}
+
+.sect-name {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 1rpx;
+}
+
+.sect-dept {
+  font-family: var(--mono);
+  font-size: 22rpx;
+  color: var(--sect);
+  margin-top: 4rpx;
+}
+
+.sect-flag {
+  flex-shrink: 0;
+  font-size: 20rpx;
+  font-family: var(--mono);
+  color: var(--sect);
+  border: 1rpx solid var(--sect);
+  border-radius: 999rpx;
+  padding: 4rpx 14rpx;
+  opacity: 0.9;
+}
+
+.sect-slogan {
+  font-family: var(--mono);
+  font-size: 23rpx;
+  color: var(--text-secondary);
+  margin: 16rpx 0 14rpx;
+  padding-left: 16rpx;
+  border-left: 3rpx solid var(--sect);
+}
+
+.sect-intro {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.sect-block {
+  margin-top: 24rpx;
+}
+
+/* 功法境界 */
+.level-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.level-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.level-dot {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #fff;
+  background: var(--sect);
+  box-shadow: 0 4rpx 12rpx rgba(108, 92, 231, 0.18);
+}
+
+.level-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.level-name {
+  font-size: 27rpx;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.level-desc {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-top: 2rpx;
+}
+
+.level-reward {
+  display: inline-block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: var(--sect);
+  background: rgba(108, 92, 231, 0.06);
+  border-radius: 999rpx;
+  padding: 4rpx 16rpx;
+}
+
+/* 招式 */
+.chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 22rpx;
+  padding: 8rpx 18rpx;
+  border-radius: 10rpx;
+  background: rgba(108, 92, 231, 0.08);
+  color: var(--primary);
+  border: 1rpx solid rgba(108, 92, 231, 0.16);
+}
+
+/* 镇派绝学 + 长老 */
+.sect-foot {
+  margin-top: 24rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.sect-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 14rpx;
+}
+
+.sect-meta-label {
+  flex-shrink: 0;
+  font-size: 22rpx;
+  font-family: var(--mono);
+  color: var(--sect);
+  width: 130rpx;
+}
+
+.sect-meta-val {
+  font-size: 25rpx;
+  color: var(--text);
+}
+
+.sect-join {
+  margin-top: 26rpx;
+  background: var(--sect);
+  color: #fff;
+  box-shadow: 0 8rpx 24rpx rgba(108, 92, 231, 0.22);
+}
+
+.sect-join:active {
+  transform: scale(0.97);
+}
+
+.sect-tip {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 24rpx;
+  color: var(--text-muted);
+  padding: 20rpx 0 40rpx;
+}

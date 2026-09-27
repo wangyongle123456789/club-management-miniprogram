@@ -1,0 +1,78 @@
+.honor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.honor-item {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.honor-item:active {
+  opacity: 0.75;
+}
+
+.honor-item:last-child {
+  border-bottom: none;
+}
+
+.honor-rank {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 26rpx;
+  color: #fff;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.rank-gold { background: linear-gradient(135deg, #ffeaa7, #fdcb6e); color: #d63031; }
+.rank-silver { background: linear-gradient(135deg, #dfe6e9, #b2bec3); color: #2d3436; }
+.rank-bronze { background: linear-gradient(135deg, #fab1a0, #e17055); color: #fff; }
+.rank-normal { background: var(--primary-gradient); }
+
+.honor-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.honor-text {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.honor-level {
+  display: inline-block;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #6c5ce7;
+  background: rgba(108, 92, 231, 0.1);
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+}
+
+.honor-desc {
+  margin-top: 12rpx;
+  font-size: 25rpx;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.honor-arrow {
+  font-size: 36rpx;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  flex-shrink: 0;
+}

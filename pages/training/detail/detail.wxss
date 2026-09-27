@@ -1,0 +1,61 @@
+/* pages/training/detail/detail.wxss */
+@import "../../gallery/detail/detail.wxss";
+
+.train-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+  font-size: 26rpx;
+  color: #636e72;
+  margin-bottom: 28rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx dashed #dfe6e9;
+}
+
+.train-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  line-height: 1.5;
+}
+
+.train-meta-icon {
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+.train-section {
+  margin-bottom: 28rpx;
+}
+
+.train-section:last-child {
+  margin-bottom: 0;
+}
+
+.outline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.outline-dot {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.outline-text {
+  flex: 1;
+  font-size: 27rpx;
+  color: #2d3436;
+  line-height: 1.6;
+}

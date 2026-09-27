@@ -1,0 +1,72 @@
+<!--pages/blueprint/blueprint.wxml-->
+<view class="container fade-in">
+  <!-- 顶部头 -->
+  <view class="bp-head card card-border">
+    <view class="code-label">// blueprint.showcase()</view>
+    <view class="bp-title">🚀 社团活动全景</view>
+    <view class="bp-sub">招新必看 · 14 场硬核活动，总有一款适合你</view>
+    <view class="bp-stats">
+      <view class="bp-stat">
+        <text class="stat-num gradient-text">14</text>
+        <text>场活动</text>
+      </view>
+      <view class="bp-stat">
+        <text class="stat-num gradient-text">7</text>
+        <text>大方向</text>
+      </view>
+      <view class="bp-stat">
+        <text class="stat-num gradient-text">M304</text>
+        <text>实战基地</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类筛选 -->
+  <scroll-view scroll-x class="cat-bar" enhanced show-scrollbar="{{false}}">
+    <view
+      class="cat-item {{activeCat === item.key ? 'active' : ''}}"
+      wx:for="{{categories}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="switchCat"
+    >{{item.label}}</view>
+  </scroll-view>
+
+  <!-- 活动卡片墙 -->
+  <view class="bp-list">
+    <view
+      class="bp-card card card-border"
+      wx:for="{{list}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="goDetail"
+      style="--c:{{item.color}}"
+    >
+      <text class="bp-watermark">{{item.no}}</text>
+      <view class="bp-card-top">
+        <view class="bp-icon" style="background:{{item.color}}1a;color:{{item.color}}">{{item.icon}}</view>
+        <view class="bp-card-head">
+          <text class="bp-no">No.{{item.no}}</text>
+          <text class="bp-cat" style="background:{{item.color}}1a;color:{{item.color}}">{{item.category}}</text>
+        </view>
+      </view>
+      <view class="bp-name">{{item.title}}</view>
+      <view class="bp-theme">「{{item.theme}}」</view>
+      <view class="bp-summary">{{item.summary}}</view>
+      <view class="bp-tags">
+        <text class="bp-tag" wx:for="{{item.highlights}}" wx:for-item="h" wx:key="*this" wx:if="{{index < 2}}">{{h}}</text>
+      </view>
+      <view class="bp-foot">
+        <text class="bp-time">🕐 {{item.time}}</text>
+        <text class="bp-more" style="color:{{item.color}}">详情 ›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部报名 CTA -->
+  <view class="bp-cta card card-border">
+    <view class="bp-cta-title">看到心动的活动了？</view>
+    <view class="bp-cta-sub">加入算软社，一起把代码写进现实。</view>
+    <view class="btn btn-primary" bindtap="goRecruit">立即报名 · 加入我们 →</view>
+  </view>
+</view>

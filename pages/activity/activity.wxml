@@ -1,0 +1,38 @@
+<!--pages/activity/activity.wxml-->
+<view class="container fade-in">
+  <view class="card card-border activity-header-card">
+    <view class="code-label">// activities.schedule()</view>
+    <view class="section-title">📅 {{clubName}} · 活动日程</view>
+  </view>
+  <view class="card card-border" wx:if="{{activities.length > 0}}">
+    <view class="activity-item" wx:for="{{activities}}" wx:key="id" data-id="{{item.id}}" bindtap="goToDetail">
+      <view class="activity-timeline">
+        <view class="timeline-dot {{item.status === '进行中' ? 'active' : (item.status === '即将开始' ? 'upcoming' : '')}}"></view>
+        <view class="timeline-line" wx:if="{{index < activities.length - 1}}"></view>
+      </view>
+      <view class="activity-content">
+        <view class="activity-header">
+          <text class="activity-title">{{item.title}}</text>
+          <text class="tag {{item.status === '进行中' ? 'tag-success' : (item.status === '即将开始' ? 'tag-primary' : '')}}">{{item.status}}</text>
+        </view>
+        <view class="activity-desc" wx:if="{{item.desc}}">{{item.desc}}</view>
+        <view class="activity-detail">
+          <view class="activity-detail-item">
+            <text class="activity-detail-icon">🕐</text>
+            <text>{{item.time}}</text>
+          </view>
+          <view class="activity-detail-item">
+            <text class="activity-detail-icon">📍</text>
+            <text>{{item.location}}</text>
+          </view>
+        </view>
+        <view class="activity-more">查看完整介绍 ›</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{activities.length === 0}}" class="empty-state">
+    <view class="empty-icon">📅</view>
+    <text class="empty-text">暂无活动安排</text>
+  </view>
+</view>

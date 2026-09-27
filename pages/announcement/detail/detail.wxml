@@ -1,0 +1,26 @@
+<!--pages/announcement/detail/detail.wxml-->
+<view class="container fade-in" wx:if="{{item}}">
+  <view class="bg-orbs">
+    <view class="orb orb-1"></view>
+    <view class="orb orb-2"></view>
+    <view class="orb orb-3"></view>
+  </view>
+
+  <view class="card card-border detail-story-card">
+    <view class="code-label">// announcement.detail()</view>
+    <view class="ann-type-tag {{item.type}}">{{item.type === 'notice' ? '通知' : '活动'}}</view>
+    <view class="detail-title dark">{{item.title}}</view>
+    <view class="ann-meta">
+      <text>📅 {{item.time}}</text>
+      <text wx:if="{{item.author}}">✍️ {{item.author}}</text>
+    </view>
+
+    <view class="ann-content">
+      <view class="story-paragraph" wx:for="{{item.content}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="detail-actions">
+    <view class="btn btn-primary" bindtap="goToApply">立即报名 / 了解更多</view>
+  </view>
+</view>

@@ -1,0 +1,150 @@
+<!--pages/admin/enrollments/enrollments.wxml-->
+<view class="container fade-in">
+  <!-- 顶部操作栏 -->
+  <view class="action-bar">
+    <view class="btn btn-outline small" bindtap="toggleEdit">
+      {{isEditing ? '取消编辑' : '✏️ 编辑规则'}}
+    </view>
+    <view class="btn btn-outline small" bindtap="resetRules" wx:if="{{!isEditing}}">
+      🔄 恢复默认
+    </view>
+  </view>
+
+  <!-- 报名时间 -->
+  <view class="card">
+    <view class="section-title">📅 报名时间</view>
+    <view class="form-row" wx:if="{{isEditing}}">
+      <view class="form-item half">
+        <text class="label">开始日期</text>
+        <picker mode="date" value="{{rules.startTime}}" bindchange="onInput" data-field="startTime">
+          <view class="picker-value">{{rules.startTime || '请选择'}}</view>
+        </picker>
+      </view>
+      <view class="form-item half">
+        <text class="label">结束日期</text>
+        <picker mode="date" value="{{rules.endTime}}" bindchange="onInput" data-field="endTime">
+          <view class="picker-value">{{rules.endTime || '请选择'}}</view>
+        </picker>
+      </view>
+    </view>
+    <view wx:else>
+      <view class="detail-row">
+        <text class="label">报名开始</text><text>{{rules.startTime}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="label">报名结束</text><text>{{rules.endTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 人数限制 -->
+  <view class="card">
+    <view class="section-title">👥 人数限定</view>
+    <view class="form-row" wx:if="{{isEditing}}">
+      <view class="form-item full">
+        <text class="label">招收人数上限</text>
+        <input class="form-input" type="number" value="{{rules.limit}}" bindinput="onInput" data-field="limit" placeholder="请输入人数" />
+      </view>
+    </view>
+    <view class="detail-row" wx:else>
+      <text class="label">人数上限</text><text>{{rules.limit}} 人</text>
+    </view>
+  </view>
+
+  <!-- 审核规则 -->
+  <view class="card">
+    <view class="section-title">✅ 审核规则</view>
+    <view class="form-row" wx:if="{{isEditing}}">
+      <view class="form-item full switch-row">
+        <text class="label">是否开启审核</text>
+        <switch checked="{{rules.requireAudit}}" bindchange="onSwitch" data-field="requireAudit" color="#6c5ce7" />
+      </view>
+    </view>
+    <view class="detail-row" wx:else>
+      <text class="label">审核规则</text><text>{{rules.requireAudit ? '需要审核' : '无需审核'}}</text>
+    </view>
+  </view>
+
+  <!-- 取消规则 -->
+  <view class="card">
+    <view class="section-title">🚫 取消规则</view>
+    <view class="form-row" wx:if="{{isEditing}}">
+      <view class="form-item full">
+        <input class="form-input" value="{{rules.cancelRule}}" bindinput="onInput" data-field="cancelRule" placeholder="输入取消报名规则说明" />
+      </view>
+    </view>
+    <view class="detail-row" wx:else>
+      <text class="label">取消规则</text><text class="text-wrap">{{rules.cancelRule}}</text>
+    </view>
+  </view>
+
+  <!-- 介绍图集 -->
+  <view class="card">
+    <view class="section-title">🖼️ 介绍图集</view>
+    <view wx:if="{{isEditing}}">
+      <view class="image-grid">
+        <block wx:for="{{rules.introImages}}" wx:key="*this">
+          <view class="image-item">
+            <image src="{{item}}" mode="aspectFill" />
+            <view class="image-remove" data-index="{{index}}" catchtap="removeImage">×</view>
+          </view>
+        </block>
+        <view class="image-add" bindtap="chooseImages" wx:if="{{canAddImage}}">
+          <text>+</text>
+          <text>添加</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <view wx:if="{{hasIntroImages}}" class="image-grid">
+        <image wx:for="{{rules.introImages}}" wx:key="*this" src="{{item}}" mode="aspectFill" class="image-item" />
+      </view>
+      <view wx:else class="detail-row">
+        <text class="label">介绍图集</text><text style="color:var(--text-secondary)">暂无图片</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 推荐置顶 -->
+  <view class="card">
+    <view class="section-title">📌 推荐置顶</view>
+    <view class="form-row" wx:if="{{isEditing}}">
+      <view class="form-item full switch-row">
+        <text class="label">首页推荐置顶</text>
+        <switch checked="{{rules.recommendTop}}" bindchange="onSwitch" data-field="recommendTop" color="#6c5ce7" />
+      </view>
+    </view>
+    <view class="detail-row" wx:else>
+      <text class="label">推荐置顶</text><text>{{rules.recommendTop ? '已开启' : '未开启'}}</text>
+    </view>
+  </view>
+
+  <!-- 二维码 -->
+  <view class="card">
+    <view class="section-title">📱 招新二维码</view>
+    <view wx:if="{{isEditing}}">
+      <view class="qr-area" bindtap="chooseQRCode">
+        <image wx:if="{{hasQRCode}}" src="{{rules.qrCode}}" mode="aspectFit" class="qr-img" />
+        <view wx:else class="qr-placeholder">
+          <text class="qr-icon">📷</text>
+          <text>点击上传二维码</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <view wx:if="{{hasQRCode}}" class="qr-area">
+        <image src="{{rules.qrCode}}" mode="aspectFit" class="qr-img" />
+      </view>
+      <view wx:else class="detail-row">
+        <text class="label">招新二维码</text><text style="color:var(--text-secondary)">未上传</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 保存按钮（仅编辑模式） -->
+  <view class="save-area" wx:if="{{isEditing}}">
+    <view class="btn btn-primary" bindtap="saveRules">💾 保存报名规则</view>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

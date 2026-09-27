@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="log-list" wx:if="{{logs.length > 0}}">
+    <view class="log-item" wx:for="{{logs}}" wx:key="id">
+      <view class="log-time">{{item.time}}</view>
+      <view class="log-action">{{item.action}}</view>
+      <view class="log-detail" wx:if="{{item.detail}}">{{item.detail}}</view>
+      <view class="log-operator" wx:if="{{item.operator}}">操作人：{{item.operator}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{logs.length === 0}}" class="empty-state">
+    <view class="empty-icon">📋</view>
+    <text>暂无日志</text>
+  </view>
+
+  <view wx:if="{{logs.length > 0}}" class="btn btn-danger" bindtap="clear">清空日志</view>
+</view>

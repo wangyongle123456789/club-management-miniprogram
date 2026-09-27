@@ -1,0 +1,129 @@
+<!--pages/admin/content-edit/content-edit.wxml-->
+
+<!-- ====== 列表模式 ====== -->
+<view class="container fade-in" wx:if="{{view === 'list'}}">
+  <view class="btn-add" bindtap="addItem">
+    <text class="btn-add-icon">＋</text>
+    <text>新增{{configName}}</text>
+  </view>
+
+  <block wx:if="{{items.length === 0}}">
+    <view class="empty-tip">暂无{{configName}}，点击上方按钮新增</view>
+  </block>
+
+  <view class="card list-card" wx:for="{{items}}" wx:key="id">
+    <view class="list-item">
+      <!-- 公告 -->
+      <block wx:if="{{contentType === 'announcement'}}">
+        <view class="list-main">
+          <view class="list-title">{{item.title}}</view>
+          <view class="list-meta">{{item.time}} · {{item.type === 'notice' ? '通知' : '活动'}}</view>
+        </view>
+      </block>
+
+      <!-- 荣誉 -->
+      <block wx:elif="{{contentType === 'honor'}}">
+        <view class="list-main">
+          <view class="list-text">{{item.text}}</view>
+        </view>
+      </block>
+
+      <!-- 活动 -->
+      <block wx:elif="{{contentType === 'activity'}}">
+        <view class="list-main">
+          <view class="list-title">{{item.title}}</view>
+          <view class="list-meta">{{item.time}} · {{item.location}} · <text class="status-tag">{{item.status}}</text></view>
+        </view>
+      </block>
+
+      <!-- 培训 -->
+      <block wx:elif="{{contentType === 'training'}}">
+        <view class="list-main">
+          <view class="list-title">{{item.title}}</view>
+          <view class="list-meta">{{item.time}}</view>
+        </view>
+      </block>
+
+      <!-- 风采 -->
+      <block wx:elif="{{contentType === 'gallery'}}">
+        <view class="list-main">
+          <view class="list-title">{{item.title}}</view>
+          <view class="list-meta">{{item.count}}张图片</view>
+        </view>
+      </block>
+
+      <!-- 轮播图 -->
+      <block wx:elif="{{contentType === 'banner'}}">
+        <view class="list-main banner-row">
+          <image class="banner-thumb" src="{{item.cover}}" mode="aspectFill" />
+          <view class="banner-info">
+            <view class="list-title">{{item.title}}</view>
+            <view class="list-meta">首页轮播图</view>
+          </view>
+        </view>
+      </block>
+
+      <view class="list-actions">
+        <text class="action-edit" data-item="{{item}}" bindtap="editItem">编辑</text>
+        <text class="action-del" data-id="{{item.id}}" bindtap="confirmDelete">删除</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- ====== 编辑模式 ====== -->
+<view class="container fade-in" wx:if="{{view === 'edit'}}">
+  <view class="card">
+    <view class="form-item" wx:for="{{editFields}}" wx:key="key">
+      <text class="form-label">{{item.label}}</text>
+
+      <!-- 文本输入 -->
+      <input wx:if="{{item.type === 'text' || item.type === 'number'}}"
+        class="form-input"
+        type="{{item.type}}"
+        placeholder="{{item.placeholder}}"
+        value="{{editItem[item.key]}}"
+        data-field="{{item.key}}"
+        bindinput="onFieldInput"
+        confirm-type="done"
+        adjust-position="{{true}}"
+      />
+
+      <!-- 多行文本 -->
+      <textarea wx:if="{{item.type === 'textarea'}}"
+        class="form-textarea"
+        placeholder="{{item.placeholder}}"
+        value="{{editItem[item.key]}}"
+        data-field="{{item.key}}"
+        bindinput="onFieldInput"
+        auto-height
+      />
+
+      <!-- 选择器 -->
+      <view wx:if="{{item.type === 'picker'}}" class="picker-group">
+        <view class="picker-option {{editItem[item.key] === opt ? 'picker-active' : ''}}"
+          wx:for="{{item.options}}" wx:for-item="opt" wx:for-index="oi" wx:key="*this"
+          data-field="{{item.key}}" data-value="{{opt}}" bindtap="onFieldInput">
+          {{item.optionLabels ? item.optionLabels[oi] : opt}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="edit-btns">
+    <button class="btn btn-cancel" bindtap="cancelEdit">取消</button>
+    <button class="btn btn-primary" bindtap="saveEdit">保存</button>
+  </view>
+</view>
+
+<!-- 删除确认弹窗 -->
+<view class="modal-mask" wx:if="{{confirmDeleteId !== null}}" bindtap="cancelDelete">
+  <view class="modal-card" catchtap="noop">
+    <view class="modal-title">确认删除</view>
+    <view class="modal-body">删除后不可恢复，确定要删除这条{{configName}}吗？</view>
+    <view class="modal-btns">
+      <button class="btn btn-cancel" bindtap="cancelDelete">取消</button>
+      <button class="btn btn-danger" bindtap="doDelete">删除</button>
+    </view>
+  </view>
+</view>

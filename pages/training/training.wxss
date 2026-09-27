@@ -1,0 +1,113 @@
+.train-header-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.train-header-card::before {
+  content: '';
+  position: absolute;
+  top: -30rpx;
+  right: -30rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background: var(--accent-light);
+  opacity: 0.5;
+}
+
+.train-item {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.train-item:active {
+  opacity: 0.75;
+}
+
+.train-icon-box {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  flex-shrink: 0;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.train-icon-1 { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
+.train-icon-2 { background: linear-gradient(135deg, #81ecec, #00cec9); }
+.train-icon-3 { background: linear-gradient(135deg, #fd79a8, #e84393); }
+.train-icon-4 { background: linear-gradient(135deg, #ffeaa7, #fdcb6e); }
+
+.train-content {
+  flex: 1;
+  padding-bottom: 24rpx;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.train-item:last-child .train-content {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.train-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14rpx;
+}
+
+.train-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  flex: 1;
+}
+
+.train-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.train-info-item {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.train-info-icon {
+  width: 32rpx;
+  font-size: 24rpx;
+}
+
+.train-target-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4rpx 14rpx;
+  border-radius: 16rpx;
+  font-size: 22rpx;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.train-more {
+  margin-top: 14rpx;
+  font-size: 24rpx;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.train-arrow {
+  font-size: 36rpx;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  flex-shrink: 0;
+}

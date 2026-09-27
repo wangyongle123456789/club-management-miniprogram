@@ -1,0 +1,19 @@
+<!--pages/profile/history/history.wxml-->
+<view class="container">
+  <view class="history-list">
+    <view class="history-card" wx:for="{{history}}" wx:key="id" data-id="{{item.id}}" bindtap="goToDetail">
+      <image class="history-cover" src="{{item.cover}}" mode="aspectFill" />
+      <view class="history-info">
+        <view class="history-name">{{item.name}}</view>
+        <view class="history-time">{{item.time}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{history.length === 0}}" class="empty-state">
+    <view class="empty-icon">🕐</view>
+    <text>暂无浏览记录</text>
+  </view>
+
+  <view wx:if="{{history.length > 0}}" class="btn btn-outline" bindtap="clear">清空历史</view>
+</view>

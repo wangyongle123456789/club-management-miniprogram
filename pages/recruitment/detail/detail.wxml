@@ -1,0 +1,108 @@
+<!--pages/recruitment/detail/detail.wxml-->
+<view class="container" wx:if="{{club}}">
+  <image class="detail-cover" src="{{club.cover}}" mode="aspectFill" />
+
+  <view class="code-card">
+    <view class="code-bar">
+      <view class="dot dot-r"></view>
+      <view class="dot dot-y"></view>
+      <view class="dot dot-g"></view>
+      <view class="code-file">club_detail.ts</view>
+    </view>
+    <view class="code-body">
+      <view class="detail-header">
+        <image class="detail-logo" src="{{club.logo}}" mode="aspectFit" />
+        <view class="detail-name-group">
+          <view class="detail-name">{{club.name}}</view>
+          <text class="tag {{club.status === 'recruiting' ? 'tag-success' : 'tag-danger'}}">
+            {{club.status === 'recruiting' ? '招新中' : '已满员'}}
+          </text>
+        </view>
+      </view>
+      <view class="detail-meta">
+        <text class="mono">招募：{{club.recruitCount}} 人</text>
+        <text class="mono">已报：{{club.recruitedCount}} 人</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card card-border">
+    <view class="code-label">// about</view>
+    <view class="term-title">社团简介</view>
+    <view class="detail-intro">{{club.intro}}</view>
+    <view class="story-link" bindtap="goToStory">
+      📖 读读我们的故事（社团报道） ›
+    </view>
+  </view>
+
+  <view class="card card-border">
+    <view class="term-title">联系方式</view>
+    <view class="detail-contact">{{club.contact}}</view>
+  </view>
+
+  <view class="card card-border">
+    <view class="term-title">社团概况</view>
+    <view class="detail-facts">
+      <view class="fact-item">
+        <text class="fact-label">挂靠单位</text>
+        <text class="fact-value">{{club.affiliation}}</text>
+      </view>
+      <view class="fact-item">
+        <text class="fact-label">指导老师</text>
+        <text class="fact-value">{{club.advisor}}</text>
+      </view>
+      <view class="fact-item">
+        <text class="fact-label">活动基地</text>
+        <text class="fact-value">{{club.base}}</text>
+      </view>
+      <view class="fact-item">
+        <text class="fact-label">成立时间</text>
+        <text class="fact-value mono">{{club.founderYear}} 年</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card card-border">
+    <view class="term-title">部门设置</view>
+      <view class="dept-list">
+        <view class="dept-item" wx:for="{{club.departments}}" wx:key="name" data-dept="{{item.name}}" bindtap="goToSectDetail">
+          <view class="dept-name">{{item.name}}</view>
+          <view class="dept-desc">{{item.desc}}</view>
+        </view>
+      </view>
+      <view class="dept-more" bindtap="goToSects">⚔️ 查看四大门派完整图谱 ›</view>
+  </view>
+
+  <view class="card card-border">
+    <view class="term-title">活动日程</view>
+    <view class="detail-contact">{{club.schedule}}</view>
+  </view>
+
+  <view class="card card-border">
+    <view class="term-title">荣誉成就</view>
+    <view class="honor-list">
+      <view class="honor-item" wx:for="{{club.honors}}" wx:key="*this">
+        <text class="honor-badge">{{index + 1}}</text>
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card card-border">
+    <view class="term-title">招募状态</view>
+    <view class="detail-status">
+      <text>报名状态：{{applied ? '已报名' : '未报名'}}</text>
+      <text>审核方式：{{club.requireAudit ? '须审核' : '无需审核'}}</text>
+    </view>
+  </view>
+
+  <view class="action-bar">
+    <view class="btn btn-outline fav-btn" bindtap="toggleFavorite">
+      {{favorited ? '已收藏' : '收藏'}}
+    </view>
+    <button class="btn btn-primary share-btn" open-type="share">分享</button>
+    <view class="btn btn-primary apply-btn {{club.status !== 'recruiting' || applied ? 'disabled' : ''}}" bindtap="goToApply">
+      {{applied ? '已报名' : '立即报名'}}
+    </view>
+  </view>
+</view>

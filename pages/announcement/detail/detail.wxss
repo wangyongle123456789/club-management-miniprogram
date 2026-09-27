@@ -1,0 +1,36 @@
+/* pages/announcement/detail/detail.wxss */
+@import "../../gallery/detail/detail.wxss";
+
+.ann-type-tag {
+  display: inline-block;
+  font-size: 22rpx;
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  font-weight: 700;
+  margin-bottom: 20rpx;
+}
+
+.ann-type-tag.notice {
+  background: rgba(0, 194, 255, 0.12);
+  color: #0984e3;
+}
+
+.ann-type-tag.activity {
+  background: rgba(108, 92, 231, 0.12);
+  color: #6c5ce7;
+}
+
+.ann-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24rpx;
+  font-size: 24rpx;
+  color: #b2bec3;
+  margin-bottom: 28rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx dashed #dfe6e9;
+}
+
+.ann-content .story-paragraph {
+  margin-bottom: 20rpx;
+}

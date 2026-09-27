@@ -1,0 +1,125 @@
+.activity-header-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-header-card::before {
+  content: '';
+  position: absolute;
+  top: -40rpx;
+  right: -40rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: var(--primary-light);
+  opacity: 0.5;
+}
+
+.activity-item {
+  display: flex;
+  gap: 20rpx;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.activity-item:active {
+  opacity: 0.75;
+}
+
+/* 左侧时间轴 */
+.activity-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48rpx;
+}
+
+.timeline-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  box-shadow: 0 0 0 6rpx var(--primary-light);
+  margin-top: 8rpx;
+}
+
+.timeline-line {
+  flex: 1;
+  width: 2rpx;
+  background: var(--border);
+  margin: 8rpx 0;
+}
+
+.timeline-dot.active {
+  background: var(--success);
+  box-shadow: 0 0 0 6rpx var(--success-light);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 6rpx var(--success-light); }
+  50% { box-shadow: 0 0 0 14rpx rgba(0, 184, 148, 0.15); }
+}
+
+.timeline-dot.upcoming {
+  background: var(--warning);
+  box-shadow: 0 0 0 6rpx var(--warning-light);
+}
+
+/* 右侧内容 */
+.activity-content {
+  flex: 1;
+  padding-bottom: 24rpx;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.activity-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  flex: 1;
+  margin-right: 16rpx;
+}
+
+.activity-desc {
+  font-size: 25rpx;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 14rpx;
+  padding: 14rpx 18rpx;
+  background: rgba(108, 92, 231, 0.06);
+  border-radius: 14rpx;
+  border-left: 6rpx solid var(--primary-light);
+}
+
+.activity-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.activity-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.activity-detail-icon {
+  width: 32rpx;
+  font-size: 24rpx;
+}
+
+.activity-more {
+  margin-top: 14rpx;
+  font-size: 24rpx;
+  color: var(--primary);
+  font-weight: 600;
+}

@@ -1,0 +1,49 @@
+<!--pages/gallery/gallery.wxml-->
+<view class="container fade-in">
+  <!-- 装饰光球 -->
+  <view class="bg-orbs">
+    <view class="orb orb-1"></view>
+    <view class="orb orb-2"></view>
+    <view class="orb orb-3"></view>
+  </view>
+
+  <view class="code-label">// gallery.showcase()</view>
+  <view class="section-head gallery-head">
+    <view class="section-main">
+      <view class="section-title-lg">社团风采</view>
+    </view>
+    <view class="section-sub">记录我们的高光时刻</view>
+  </view>
+
+  <block wx:if="{{gallery.length > 0}}">
+    <!-- 精选大图 -->
+    <view class="g-featured" data-index="0" bindtap="preview">
+      <image class="g-featured-img" src="{{gallery[0].cover || '/images/gallery/default-cover.jpg'}}" mode="aspectFill" lazy-load />
+      <view class="g-featured-mask">
+        <view class="g-tag">精 选</view>
+        <view class="g-featured-bottom">
+          <view class="g-featured-title">{{gallery[0].title}}</view>
+          <view class="g-featured-count">{{gallery[0].count}} 张 · 查看故事 ›</view>
+        </view>
+        <view class="g-featured-desc">{{gallery[0].desc}}</view>
+      </view>
+    </view>
+
+    <!-- 2 列等高网格 -->
+    <view class="g-grid">
+      <view class="g-cell" wx:for="{{gallery}}" wx:key="id" wx:if="{{index > 0}}" data-index="{{index}}" bindtap="preview">
+        <image class="g-cell-img" src="{{item.cover || '/images/gallery/default-cover.jpg'}}" mode="aspectFill" lazy-load />
+        <view class="g-cell-mask">
+          <view class="g-cell-title">{{item.title}}</view>
+          <view class="g-cell-desc">{{item.desc}}</view>
+          <view class="g-cell-count">{{item.count}} 张 · 查看故事 ›</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:else class="empty-state">
+    <view class="empty-icon">🖼️</view>
+    <text class="empty-text">暂无风采照片</text>
+  </view>
+</view>

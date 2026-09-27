@@ -1,0 +1,18 @@
+<!--pages/profile/my-favorites/my-favorites.wxml-->
+<view class="container">
+  <view class="favorite-list">
+    <view class="favorite-card" wx:for="{{favorites}}" wx:key="id" data-id="{{item.id}}" bindtap="goToDetail">
+      <image class="favorite-cover" src="{{item.cover}}" mode="aspectFill" />
+      <view class="favorite-info">
+        <view class="favorite-name">{{item.name}}</view>
+        <view class="favorite-time">收藏于 {{item.time}}</view>
+      </view>
+      <view class="btn btn-outline remove-btn" data-id="{{item.id}}" catchtap="remove">移除</view>
+    </view>
+  </view>
+
+  <view wx:if="{{favorites.length === 0}}" class="empty-state">
+    <view class="empty-icon">⭐</view>
+    <text>暂无收藏</text>
+  </view>
+</view>

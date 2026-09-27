@@ -1,0 +1,218 @@
+.recruit-banner {
+  width: 100%;
+  height: 320rpx;
+  border-radius: 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 30rpx rgba(108, 92, 231, 0.15);
+}
+
+/* ===== Tab 切换栏升级 ===== */
+.tab-bar {
+  display: flex;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border: 1rpx solid rgba(108, 92, 231, 0.10);
+  border-radius: 24rpx;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 18rpx rgba(108, 92, 231, 0.08);
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 28rpx 0;
+  font-size: 28rpx;
+  color: var(--text-muted);
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tab-item.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56rpx;
+  height: 6rpx;
+  background: var(--accent-gradient);
+  border-radius: 3rpx;
+  box-shadow: 0 0 12rpx rgba(0, 194, 255, 0.6);
+}
+
+/* ===== 简介标签页 ===== */
+.intro-text {
+  font-size: 28rpx;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 32rpx;
+  padding: 24rpx;
+  background: var(--bg);
+  border-radius: 16rpx;
+}
+
+.intro-meta-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.meta-row:last-child {
+  border-bottom: none;
+}
+
+.meta-label {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.meta-value {
+  font-size: 28rpx;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ===== 方向速览 ===== */
+.dir-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 18rpx;
+}
+.dir-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+  margin-bottom: 30rpx;
+}
+.dir-item {
+  padding: 20rpx 22rpx;
+  background: var(--bg);
+  border-radius: 16rpx;
+  border-left: 5rpx solid var(--primary);
+  transition: transform .15s ease;
+}
+.dir-item:active { transform: scale(0.98); }
+.dir-name {
+  font-size: 27rpx;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6rpx;
+}
+.dir-desc {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ===== 日程标签页 ===== */
+.schedule-text {
+  font-size: 28rpx;
+  line-height: 2.4;
+  color: var(--text);
+  white-space: pre-line;
+  padding: 20rpx 0;
+}
+
+/* ===== 荣誉标签页 ===== */
+.honor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.honor-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.honor-item:last-child {
+  border-bottom: none;
+}
+
+.honor-badge {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 14rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* 奖牌渐变色 */
+.honor-badge.gold { background: linear-gradient(135deg, #fdcb6e, #e17055); }
+.honor-badge.silver { background: linear-gradient(135deg, #b2bec3, #636e72); }
+.honor-badge.bronze { background: linear-gradient(135deg, #fab1a0, #e17055); }
+.honor-badge.normal { background: var(--primary-gradient); }
+
+.honor-text {
+  font-size: 28rpx;
+  color: var(--text);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ===== 底部固定栏 ===== */
+.apply-fixed-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  box-shadow: 0 -4rpx 24rpx rgba(0, 0, 0, 0.06);
+}
+
+.recruit-status {
+  flex: 1;
+}
+
+.recruit-count {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.apply-btn {
+  width: 260rpx;
+}
+
+.apply-btn.disabled {
+  opacity: 0.6;
+  background: linear-gradient(135deg, #b2bec3, #dfe6e9);
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* 防止底部固定栏压住最后一张卡片 */
+.container {
+  padding-bottom: 160rpx;
+}

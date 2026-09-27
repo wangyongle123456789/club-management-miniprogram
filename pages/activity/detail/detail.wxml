@@ -1,0 +1,41 @@
+<!--pages/activity/detail/detail.wxml-->
+<view class="container fade-in" wx:if="{{item}}">
+  <view class="bg-orbs">
+    <view class="orb orb-1"></view>
+    <view class="orb orb-2"></view>
+    <view class="orb orb-3"></view>
+  </view>
+
+  <view class="card card-border detail-story-card">
+    <view class="code-label">// activity.detail()</view>
+    <view class="act-status {{item.status === '进行中' ? 'ongoing' : 'upcoming'}}">{{item.status}}</view>
+    <view class="detail-title dark">{{item.title}}</view>
+    <view class="act-meta">
+      <view class="act-meta-item"><text class="act-meta-icon">🕐</text><text>{{item.time}}</text></view>
+      <view class="act-meta-item"><text class="act-meta-icon">📍</text><text>{{item.location}}</text></view>
+      <view class="act-meta-item"><text class="act-meta-icon">🎤</text><text>主办：{{item.host}}</text></view>
+    </view>
+
+    <view class="act-section">
+      <view class="code-label">// 活动简介</view>
+      <view class="story-paragraph">{{item.desc}}</view>
+    </view>
+
+    <view class="act-section" wx:if="{{item.agenda.length > 0}}">
+      <view class="code-label">// 活动流程</view>
+      <view class="agenda-item" wx:for="{{item.agenda}}" wx:key="*this">
+        <view class="agenda-dot">{{index + 1}}</view>
+        <view class="agenda-text">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="act-section" wx:if="{{item.detail.length > 0}}">
+      <view class="code-label">// 详细介绍</view>
+      <view class="story-paragraph" wx:for="{{item.detail}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="detail-actions">
+    <view class="btn btn-primary" bindtap="goToApply">立即报名</view>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+<!--pages/honor/detail/detail.wxml-->
+<view class="container fade-in" wx:if="{{honor}}">
+  <view class="bg-orbs">
+    <view class="orb orb-1"></view>
+    <view class="orb orb-2"></view>
+    <view class="orb orb-3"></view>
+  </view>
+
+  <!-- 荣誉头图 -->
+  <view class="detail-hero honor-hero" bindtap="previewPhoto" wx:if="{{honor.photo}}">
+    <image class="detail-cover" src="{{honor.photo}}" mode="aspectFill" />
+    <view class="detail-hero-mask">
+      <view class="honor-badge">🏆 {{honor.level}}</view>
+      <view class="detail-title">{{honor.title}}</view>
+    </view>
+  </view>
+
+  <!-- 无图时的标题区 -->
+  <view class="card card-border honor-title-card" wx:else>
+    <view class="code-label">// honor.level()</view>
+    <view class="honor-level-tag">{{honor.level}}</view>
+    <view class="detail-title dark">{{honor.title}}</view>
+  </view>
+
+  <!-- 详细介绍 -->
+  <view class="card card-border detail-story-card">
+    <view class="code-label">// honor.detail()</view>
+    <view class="honor-summary">{{honor.desc}}</view>
+    <view class="story-paragraph" wx:for="{{honor.detail}}" wx:key="*this">{{item}}</view>
+  </view>
+
+  <!-- 操作 -->
+  <view class="detail-actions">
+    <view class="btn btn-primary" bindtap="goToApply">加入我们，一起拿奖</view>
+    <view class="btn btn-secondary" bindtap="goToGallery">查看相关风采相册 ›</view>
+  </view>
+
+  <view class="detail-tip">图片来源：菏泽学院计算机学院官方新闻与活动实拍</view>
+</view>

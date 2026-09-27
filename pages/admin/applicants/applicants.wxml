@@ -1,0 +1,32 @@
+<!--pages/admin/applicants/applicants.wxml-->
+<view class="container">
+  <view class="applicant-list">
+    <view class="applicant-card" wx:for="{{applicants}}" wx:key="id">
+      <view class="applicant-header">
+        <text class="applicant-name">{{item.name}}</text>
+        <text class="tag {{item.status === 'approved' ? 'tag-success' : 'tag-warning'}}">
+          {{item.status === 'approved' ? '已通过' : '待审核'}}
+        </text>
+      </view>
+      <view class="applicant-info">
+        <text>学号：{{item.studentId}}</text>
+        <text>专业：{{item.major || '未填写'}}</text>
+        <text>手机：{{item.phone}}</text>
+        <text>时间：{{item.time}}</text>
+      </view>
+      <view class="applicant-actions">
+        <view class="btn btn-outline small" data-id="{{item.id}}" bindtap="audit">
+          {{item.status === 'approved' ? '撤销通过' : '通过审核'}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{applicants.length === 0}}" class="empty-state">
+    <view class="empty-icon">📊</view>
+    <text>暂无报名数据</text>
+  </view>
+
+  <view class="btn btn-outline" bindtap="exportExcel">导出 Excel</view>
+  <view class="btn btn-danger" bindtap="clear">清空数据</view>
+</view>

@@ -1,0 +1,80 @@
+<!--pages/recruitment/list/list.wxml-->
+<view class="container">
+  <image class="recruit-banner" src="{{club.cover}}" mode="aspectFill" bindtap="goToDetail" />
+
+  <view class="code-label">// club.profile()</view>
+
+  <!-- Tab 切换 -->
+  <view class="tab-bar">
+    <view class="tab-item {{tab === 'intro' ? 'active' : ''}}" data-tab="intro" bindtap="switchTab">
+      社团简介
+    </view>
+    <view class="tab-item {{tab === 'schedule' ? 'active' : ''}}" data-tab="schedule" bindtap="switchTab">
+      活动日程
+    </view>
+    <view class="tab-item {{tab === 'honors' ? 'active' : ''}}" data-tab="honors" bindtap="switchTab">
+      荣誉成就
+    </view>
+  </view>
+
+  <!-- 社团简介 -->
+  <view class="card card-border" wx:if="{{tab === 'intro'}}">
+    <view class="term-title">社团简介</view>
+    <view class="intro-text">{{club.intro}}</view>
+
+    <!-- 方向速览：报名前先看清能进哪个组 -->
+    <view class="dir-title">⚔️ 四大方向 · 点进去看修行路线</view>
+    <view class="dir-list">
+      <view class="dir-item" wx:for="{{club.departments}}" wx:key="name" data-dept="{{item.name}}" bindtap="goToSectDetail">
+        <view class="dir-name">{{item.name}}</view>
+        <view class="dir-desc">{{item.desc}}</view>
+      </view>
+    </view>
+
+    <view class="intro-meta-section">
+      <view class="meta-row">
+        <text class="meta-label">招募人数</text>
+        <text class="meta-value mono">{{club.recruitCount}} 人</text>
+      </view>
+      <view class="meta-row">
+        <text class="meta-label">已报名</text>
+        <text class="meta-value mono">{{club.recruitedCount}} 人</text>
+      </view>
+      <view class="meta-row">
+        <text class="meta-label">审核方式</text>
+        <text class="meta-value">{{club.requireAudit ? '需要审核' : '无需审核'}}</text>
+      </view>
+      <view class="meta-row">
+        <text class="meta-label">联系方式</text>
+        <text class="meta-value">{{club.contact}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 活动日程 -->
+  <view class="card card-border" wx:if="{{tab === 'schedule'}}">
+    <view class="term-title">活动日程</view>
+    <view class="schedule-text">{{club.schedule}}</view>
+  </view>
+
+  <!-- 荣誉成就 -->
+  <view class="card card-border" wx:if="{{tab === 'honors'}}">
+    <view class="term-title">荣誉成就</view>
+    <view class="honor-list">
+      <view class="honor-item" wx:for="{{club.honors}}" wx:key="*this">
+        <view class="honor-badge {{index === 0 ? 'gold' : (index === 1 ? 'silver' : (index === 2 ? 'bronze' : 'normal'))}}">{{index + 1}}</view>
+        <text class="honor-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 报名按钮 -->
+  <view class="apply-fixed-bar">
+    <view class="recruit-status">
+      <text class="recruit-count mono">已报 {{club.recruitedCount}}/{{club.recruitCount}} 人</text>
+    </view>
+    <view class="btn btn-primary apply-btn {{club.status !== 'recruiting' ? 'disabled' : ''}}" bindtap="goToApply">
+      {{club.status === 'recruiting' ? '立即报名' : '已满员'}}
+    </view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "announcement-item": "/components/announcement-item/announcement-item"
+  },
+  "navigationBarTitleText": "算法与软件研究社团",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

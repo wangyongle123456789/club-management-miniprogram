@@ -1,0 +1,24 @@
+<!--pages/profile/my-registrations/my-registrations.wxml-->
+<view class="container">
+  <view class="registration-list">
+    <view class="registration-card" wx:for="{{registrations}}" wx:key="id">
+      <view class="reg-header">
+        <text class="reg-name">{{item.clubName}}</text>
+        <text class="tag {{item.status === 'approved' ? 'tag-success' : (item.status === 'pending' ? 'tag-warning' : 'tag-danger')}}">
+          {{item.status === 'approved' ? '已通过' : (item.status === 'pending' ? '审核中' : '未通过')}}
+        </text>
+      </view>
+      <view class="reg-info">
+        <text>姓名：{{item.name}}</text>
+        <text wx:if="{{item.direction}}">意向方向：{{item.direction}}</text>
+        <text>申请时间：{{item.applyTime}}</text>
+      </view>
+      <view class="btn btn-outline cancel-btn" data-id="{{item.id}}" bindtap="cancel">取消报名</view>
+    </view>
+  </view>
+
+  <view wx:if="{{registrations.length === 0}}" class="empty-state">
+    <view class="empty-icon">📝</view>
+    <text>暂无报名记录</text>
+  </view>
+</view>

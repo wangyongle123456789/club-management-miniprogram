@@ -1,0 +1,51 @@
+.announcement-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--border);
+  transition: all 0.15s ease;
+}
+
+.announcement-item:active {
+  background: var(--bg);
+  margin: 0 -28rpx;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
+  border-radius: 12rpx;
+}
+
+.announcement-item:last-child {
+  border-bottom: none;
+}
+
+.announcement-tag {
+  flex-shrink: 0;
+  padding: 6rpx 16rpx;
+  border-radius: 14rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  background: var(--primary-light);
+  color: var(--primary);
+  margin-right: 16rpx;
+}
+
+.announcement-tag.activity {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.announcement-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+  color: var(--text);
+}
+
+.announcement-time {
+  flex-shrink: 0;
+  font-size: 22rpx;
+  color: var(--text-muted);
+  margin-left: 12rpx;
+}

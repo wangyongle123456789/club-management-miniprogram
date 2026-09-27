@@ -1,0 +1,5 @@
+<!--components/nav-card/nav-card.wxml-->
+<view class="nav-item" bindtap="onTap">
+  <view class="nav-icon">{{icon}}</view>
+  <text class="nav-text">{{text}}</text>
+</view>

@@ -1,0 +1,94 @@
+.step-hint {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 8rpx;
+}
+
+.register-form {
+  padding: 8rpx 0;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.form-label {
+  width: 200rpx;
+  font-size: 26rpx;
+  color: var(--text);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.form-label .required {
+  color: var(--danger);
+  margin-left: 2rpx;
+}
+
+.form-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--text);
+  padding: 12rpx 0;
+}
+
+/* 密码输入框 */
+.pwd-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.pwd-wrap .form-input {
+  flex: 1;
+}
+
+.eye-btn {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  padding: 4rpx;
+}
+
+.save-btn {
+  margin-top: 32rpx;
+}
+
+/* 步骤二操作栏 */
+.step-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 32rpx;
+}
+
+.prev-btn {
+  flex: 0 0 180rpx;
+  border: 1rpx solid var(--border);
+  background: #fff;
+  color: var(--text-secondary);
+  font-size: 28rpx;
+}
+
+.prev-btn:active {
+  background: #f5f6fa;
+}
+
+.step-actions .save-btn {
+  flex: 1;
+  margin-top: 0;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

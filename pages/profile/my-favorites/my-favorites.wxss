@@ -1,0 +1,49 @@
+.favorite-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.favorite-card {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.favorite-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.favorite-cover {
+  width: 140rpx;
+  height: 110rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.favorite-info {
+  flex: 1;
+}
+
+.favorite-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.favorite-time {
+  font-size: 24rpx;
+  color: var(--text-muted);
+}
+
+.remove-btn {
+  height: 56rpx;
+  padding: 0 24rpx;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  border-radius: 28rpx;
+}

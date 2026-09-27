@@ -1,0 +1,173 @@
+<!--index.wxml-->
+<view class="container fade-in">
+
+  <!-- 深色终端 Hero（计算机风签名元素） -->
+  <view class="hero-terminal">
+    <view class="ht-glow"></view>
+    <view class="ht-glow2"></view>
+    <view class="ht-inner">
+      <view class="ht-prompt">$ whoami --club</view>
+      <view class="ht-title" bindtap="eggTap">{{club.name}}</view>
+      <view class="ht-sub">// 以代码为语言 · 以算法为武器</view>
+      <view class="ht-badge">🔥 2026 秋季招新 · recruiting</view>
+      <view class="ht-cta btn btn-primary" bindtap="goToRecruitDetail">了解社团 · 立即报名 →</view>
+    </view>
+  </view>
+
+  <!-- 数据说服带：点数字看对应说明 -->
+  <view class="stats-band">
+    <view class="stat-item" wx:for="{{stats}}" wx:key="label" data-url="{{item.url}}" bindtap="onStatTap">
+      <view class="stat-num gradient-text">{{item.num}}</view>
+      <view class="stat-label">{{item.label}} ›</view>
+    </view>
+  </view>
+
+  <!-- 活动掠影 -->
+  <view class="card card-border">
+    <view class="code-label">// gallery.preview()</view>
+    <view class="section-head">
+      <view class="section-main">
+        <view class="section-title-lg">活动掠影</view>
+      </view>
+      <view class="section-sub">每一次相聚，都是成长</view>
+    </view>
+    <swiper class="strip" indicator-dots indicator-active-color="#ffffff" autoplay="{{true}}" circular interval="3500" duration="500" bindchange="onBannerChange" current="{{currentBanner}}">
+      <swiper-item wx:for="{{banners}}" wx:key="id" data-index="{{index}}" bindtap="goToBannerDetail">
+        <image class="strip-img" src="{{item.cover}}" mode="aspectFill" />
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 社团简介 · 代码窗口卡片 -->
+  <view class="code-card">
+    <view class="code-bar">
+      <view class="dot dot-r"></view>
+      <view class="dot dot-y"></view>
+      <view class="dot dot-g"></view>
+      <view class="code-file">club_intro.ts</view>
+    </view>
+    <view class="code-body">
+      <view class="club-intro-header">
+        <image class="club-logo" src="{{club.logo}}" mode="aspectFit" />
+        <view class="club-intro-title">
+          <text class="club-name">{{club.name}}</text>
+          <view class="glass-badge">🔥 招新中</view>
+        </view>
+      </view>
+      <view class="club-intro-text">{{club.intro}}</view>
+      <view class="club-intro-meta">
+        <view class="meta-item"><text>🏆</text><text>{{club.honors.length}} 项荣誉</text></view>
+        <view class="meta-item"><text>👥</text><text class="mono">{{club.recruitedCount}}/{{club.recruitCount}}</text></view>
+        <view class="meta-item"><text>📡</text><text>每周活动</text></view>
+      </view>
+      <view class="btn btn-primary intro-apply-btn" bindtap="goToRecruitDetail">了解详情 · 立即报名</view>
+    </view>
+  </view>
+
+  <!-- 四大门派 · 选你的赛道 -->
+  <view class="card card-border">
+    <view class="code-label">// sects.preview()</view>
+    <view class="section-head">
+      <view class="section-main">
+        <view class="section-title-lg">⚔️ 四大门派</view>
+      </view>
+      <view class="section-sub">选一个赛道，开始修行</view>
+    </view>
+    <view class="sect-grid">
+      <view class="sect-card" wx:for="{{sects}}" wx:key="id" data-id="{{item.id}}" bindtap="goToSectDetail" style="--sc:{{item.color}}">
+        <view class="sect-top">
+          <text class="sect-icon">{{item.icon}}</text>
+          <view class="sect-name-wrap">
+            <text class="sect-name">{{item.name}}</text>
+            <text class="sect-dept">{{item.deptName}}</text>
+          </view>
+        </view>
+        <view class="sect-slogan">{{item.slogan}}</view>
+        <view class="sect-skills">
+          <text class="sect-skill" wx:for="{{item.skills}}" wx:for-item="sk" wx:key="*this" wx:if="{{index < 3}}">{{sk}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="more-btn" bindtap="goToSects">查看门派修行路线 ›</view>
+  </view>
+
+  <!-- 公告通知 -->
+  <view class="card card-border announcement-card">
+    <view class="code-label">// announcements.list()</view>
+    <view class="section-head">
+      <view class="section-main">
+        <view class="section-title-lg">📢 社团公告</view>
+      </view>
+      <view class="section-sub">最新动态不错过</view>
+    </view>
+    <announcement-item
+      wx:for="{{announcements}}"
+      wx:key="id"
+      item-id="{{item.id}}"
+      title="{{item.title}}"
+      time="{{item.time}}"
+      type="{{item.type}}"
+      bind:tap="goToAnnouncementDetail"
+    />
+    <view class="divider-dotted" wx:if="{{announcements.length >= 4}}"></view>
+    <view class="more-btn" wx:if="{{announcements.length >= 4}}" bindtap="goToAnnouncement">查看全部公告 ›</view>
+  </view>
+
+  <!-- 社团活动全景 · 招新必看 -->
+  <view class="card card-border bp-home-card">
+    <view class="code-label">// blueprint.showcase()</view>
+    <view class="section-head">
+      <view class="section-main">
+        <view class="section-title-lg">🚀 社团活动全景</view>
+      </view>
+      <view class="section-sub">招新必看 · 14 场硬核活动</view>
+    </view>
+    <scroll-view scroll-x class="bp-swiper" enhanced show-scrollbar="{{false}}">
+      <view class="bp-slide" wx:for="{{blueprint}}" wx:key="id" data-id="{{item.id}}" bindtap="goToBlueprintDetail" style="--c:{{item.color}}">
+        <view class="bp-slide-top" style="background:linear-gradient(135deg,{{item.color}},{{item.color}}cc)">
+          <text class="bp-slide-no">No.{{item.no}}</text>
+          <text class="bp-slide-icon">{{item.icon}}</text>
+        </view>
+        <view class="bp-slide-body">
+          <text class="bp-slide-cat" style="color:{{item.color}}">{{item.category}}</text>
+          <text class="bp-slide-title">{{item.title}}</text>
+          <text class="bp-slide-theme">「{{item.theme}}」</text>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="more-btn" bindtap="goToBlueprint">查看全部 14 项活动 ›</view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="card card-border nav-grid-card">
+    <view class="code-label">// navigation.grid()</view>
+    <view class="section-head">
+      <view class="section-main">
+        <view class="section-title-lg">⚡ 功能入口</view>
+      </view>
+      <view class="section-sub">想看的，这里都有</view>
+    </view>
+    <view class="grid-3">
+      <view class="nav-item" wx:for="{{navs}}" wx:key="text" data-url="{{item.url}}" bindtap="onNavTap">
+        <view class="nav-icon {{item.iconClass}}">{{item.icon}}</view>
+        <text class="nav-text">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部招新 CTA -->
+  <view class="cta-banner">
+    <view class="cta-glow"></view>
+    <view class="cta-glow2"></view>
+    <view class="cta-inner">
+      <view class="cta-title">🔥 2026 秋季招新进行中</view>
+      <view class="cta-sub">名额有限 · 已报名 <text class="mono">{{club.recruitedCount}}/{{club.recruitCount}}</text></view>
+      <view class="cta-progress">
+        <view class="cta-progress-fill" style="width:{{recruitPercent}}%"></view>
+      </view>
+      <view class="cta-remaining">仅剩 {{club.recruitCount - club.recruitedCount}} 个名额，先到先得</view>
+      <view class="btn cta-btn" bindtap="goToRecruitDetail">立即报名 · 抢占名额 →</view>
+    </view>
+  </view>
+
+</view>

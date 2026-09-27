@@ -1,0 +1,47 @@
+<!--pages/profile/about/about.wxml-->
+<view class="container fade-in">
+  <view class="code-card">
+    <view class="code-bar">
+      <view class="dot dot-r"></view>
+      <view class="dot dot-y"></view>
+      <view class="dot dot-g"></view>
+      <view class="code-file">about.ts</view>
+    </view>
+    <view class="code-body">
+      <view class="about-logo">
+        <image class="about-logo-img" src="{{club.logo}}" mode="aspectFit" />
+      </view>
+      <view class="about-name">{{club.name}}</view>
+      <view class="glass-badge">🔥 {{club.category}} · {{club.affiliation}}</view>
+      <view class="about-intro">{{club.intro}}</view>
+      <view class="about-meta">
+        <view class="fact-item">
+          <text class="fact-label">挂靠单位</text>
+          <text class="fact-value">{{club.affiliation}}</text>
+        </view>
+        <view class="fact-item">
+          <text class="fact-label">指导老师</text>
+          <text class="fact-value">{{club.advisor}}</text>
+        </view>
+        <view class="fact-item">
+          <text class="fact-label">活动基地</text>
+          <text class="fact-value">{{club.base}}</text>
+        </view>
+        <view class="fact-item">
+          <text class="fact-label">成立时间</text>
+          <text class="fact-value mono">{{club.founderYear}} 年</text>
+        </view>
+        <view class="fact-item">
+          <text class="fact-label">官方公众号</text>
+          <text class="fact-value mono">hzxyjsjxy</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card card-border about-version-card">
+    <view class="code-label">// app.info</view>
+    <view class="about-version">小程序版本 {{version}}</view>
+    <view class="about-tip">本小程序用于社团招新与风采展示，内容均为本地演示数据，可在「我的 → 管理员」后台实时维护。</view>
+  </view>
+</view>

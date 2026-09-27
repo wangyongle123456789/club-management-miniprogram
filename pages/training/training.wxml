@@ -1,0 +1,36 @@
+<!--pages/training/training.wxml-->
+<view class="container fade-in">
+  <view class="card card-border train-header-card">
+    <view class="code-label">// training.courses()</view>
+    <view class="section-title">📚 {{clubName}} · 培训课程</view>
+  </view>
+  <view class="card card-border" wx:if="{{trainings.length > 0}}">
+    <view class="train-item" wx:for="{{trainings}}" wx:key="id" data-id="{{item.id}}" bindtap="goToDetail">
+      <view class="train-icon-box train-icon-{{index + 1 > 4 ? 1 : index + 1}}">
+        <text>{{index === 0 ? '🔰' : (index === 1 ? '🌲' : (index === 2 ? '🏅' : '🤖'))}}</text>
+      </view>
+      <view class="train-content">
+        <view class="train-header">
+          <text class="train-title">{{item.title}}</text>
+        </view>
+        <view class="train-info">
+          <view class="train-info-item">
+            <text class="train-info-icon">🕐</text>
+            <text>{{item.time}}</text>
+          </view>
+          <view class="train-info-item">
+            <text class="train-info-icon">👤</text>
+            <text class="train-target-badge">{{item.target}}</text>
+          </view>
+        </view>
+        <view class="train-more">查看课程大纲 ›</view>
+      </view>
+      <view class="train-arrow">›</view>
+    </view>
+  </view>
+
+  <view wx:if="{{trainings.length === 0}}" class="empty-state">
+    <view class="empty-icon">📚</view>
+    <text class="empty-text">暂无培训课程</text>
+  </view>
+</view>
